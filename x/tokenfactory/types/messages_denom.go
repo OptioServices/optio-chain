@@ -1,0 +1,114 @@
+package types
+
+import (
+	errorsmod "cosmossdk.io/errors"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
+)
+
+var _ sdk.Msg = &MsgCreateDenom{}
+
+func NewMsgCreateDenom(
+	owner string,
+	denom string,
+	description string,
+	ticker string,
+	precision int32,
+	url string,
+	maxSupply int32,
+	supply int32,
+	canChangeMaxSupply bool,
+	limitDailyMinting bool,
+	dailyMintingLimit int32,
+	hasHalving bool,
+	yearsToHalving int32,
+
+) *MsgCreateDenom {
+	return &MsgCreateDenom{
+		Owner:              owner,
+		Denom:              denom,
+		Description:        description,
+		Ticker:             ticker,
+		Precision:          precision,
+		Url:                url,
+		MaxSupply:          maxSupply,
+		Supply:             supply,
+		CanChangeMaxSupply: canChangeMaxSupply,
+		LimitDailyMinting:  limitDailyMinting,
+		DailyMintingLimit:  dailyMintingLimit,
+		HasHalving:         hasHalving,
+		YearsToHalving:     yearsToHalving,
+	}
+}
+
+func (msg *MsgCreateDenom) ValidateBasic() error {
+	_, err := sdk.AccAddressFromBech32(msg.Owner)
+	if err != nil {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid owner address (%s)", err)
+	}
+	return nil
+}
+
+var _ sdk.Msg = &MsgUpdateDenom{}
+
+func NewMsgUpdateDenom(
+	owner string,
+	denom string,
+	description string,
+	ticker string,
+	precision int32,
+	url string,
+	maxSupply int32,
+	supply int32,
+	canChangeMaxSupply bool,
+	limitDailyMinting bool,
+	dailyMintingLimit int32,
+	hasHalving bool,
+	yearsToHalving int32,
+
+) *MsgUpdateDenom {
+	return &MsgUpdateDenom{
+		Owner:              owner,
+		Denom:              denom,
+		Description:        description,
+		Ticker:             ticker,
+		Precision:          precision,
+		Url:                url,
+		MaxSupply:          maxSupply,
+		Supply:             supply,
+		CanChangeMaxSupply: canChangeMaxSupply,
+		LimitDailyMinting:  limitDailyMinting,
+		DailyMintingLimit:  dailyMintingLimit,
+		HasHalving:         hasHalving,
+		YearsToHalving:     yearsToHalving,
+	}
+}
+
+func (msg *MsgUpdateDenom) ValidateBasic() error {
+	_, err := sdk.AccAddressFromBech32(msg.Owner)
+	if err != nil {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid owner address (%s)", err)
+	}
+	return nil
+}
+
+var _ sdk.Msg = &MsgDeleteDenom{}
+
+func NewMsgDeleteDenom(
+	owner string,
+	denom string,
+
+) *MsgDeleteDenom {
+	return &MsgDeleteDenom{
+		Owner: owner,
+		Denom: denom,
+	}
+}
+
+func (msg *MsgDeleteDenom) ValidateBasic() error {
+	_, err := sdk.AccAddressFromBech32(msg.Owner)
+	if err != nil {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid owner address (%s)", err)
+	}
+	return nil
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+package optio.rewardtoken;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "optio/x/rewardtoken/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "optio/x/rewardtoken/Params";
+  option (gogoproto.equal) = true;
+
+  
+}

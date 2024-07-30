@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package optio.rewardtoken;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "optio/rewardtoken/params.proto";
+import "optio/rewardtoken/denom.proto";
+
+option go_package = "optio/x/rewardtoken/types";
+
+// GenesisState defines the rewardtoken module's genesis state.
+message GenesisState {
+  
+  // params defines all the parameters of the module.
+           Params params    = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
+  repeated Denom  denomList = 2 [(gogoproto.nullable) = false] ;
+}
+

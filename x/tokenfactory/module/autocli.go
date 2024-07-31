@@ -41,15 +41,15 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				},
 				{
 					RpcMethod:      "CreateDenom",
-					Use:            "create-denom [denom] [description] [ticker] [precision] [url] [maxSupply] [supply] [canChangeMaxSupply] [limitDailyMinting] [dailyMintingLimit] [hasHalving] [yearsToHalving]",
+					Use:            "create-denom [denom] [description] [ticker] [precision] [url] [maxSupply] [canChangeMaxSupply] [limitDailyMinting] [dailyMintingLimit] [hasHalving] [yearsToHalving]",
 					Short:          "Create a new Denom",
-					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "denom"}, {ProtoField: "description"}, {ProtoField: "ticker"}, {ProtoField: "precision"}, {ProtoField: "url"}, {ProtoField: "maxSupply"}, {ProtoField: "supply"}, {ProtoField: "canChangeMaxSupply"}, {ProtoField: "limitDailyMinting"}, {ProtoField: "dailyMintingLimit"}, {ProtoField: "hasHalving"}, {ProtoField: "yearsToHalving"}},
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "denom"}, {ProtoField: "description"}, {ProtoField: "ticker"}, {ProtoField: "precision"}, {ProtoField: "url"}, {ProtoField: "maxSupply"}, {ProtoField: "canChangeMaxSupply"}, {ProtoField: "limitDailyMinting"}, {ProtoField: "dailyMintingLimit"}, {ProtoField: "hasHalving"}, {ProtoField: "yearsToHalving"}},
 				},
 				{
 					RpcMethod:      "UpdateDenom",
 					Use:            "update-denom [denom] [description] [ticker] [precision] [url] [maxSupply] [supply] [canChangeMaxSupply] [limitDailyMinting] [dailyMintingLimit] [hasHalving] [yearsToHalving]",
 					Short:          "Update Denom",
-					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "denom"}, {ProtoField: "description"}, {ProtoField: "ticker"}, {ProtoField: "precision"}, {ProtoField: "url"}, {ProtoField: "maxSupply"}, {ProtoField: "supply"}, {ProtoField: "canChangeMaxSupply"}, {ProtoField: "limitDailyMinting"}, {ProtoField: "dailyMintingLimit"}, {ProtoField: "hasHalving"}, {ProtoField: "yearsToHalving"}},
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "denom"}, {ProtoField: "description"}, {ProtoField: "url"}, {ProtoField: "maxSupply"}, {ProtoField: "canChangeMaxSupply"}},
 				},
 				// this line is used by ignite scaffolding # autocli/tx
 			},

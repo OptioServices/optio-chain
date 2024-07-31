@@ -880,7 +880,6 @@ var (
 	fd_MsgCreateDenom_precision          protoreflect.FieldDescriptor
 	fd_MsgCreateDenom_url                protoreflect.FieldDescriptor
 	fd_MsgCreateDenom_maxSupply          protoreflect.FieldDescriptor
-	fd_MsgCreateDenom_supply             protoreflect.FieldDescriptor
 	fd_MsgCreateDenom_canChangeMaxSupply protoreflect.FieldDescriptor
 	fd_MsgCreateDenom_limitDailyMinting  protoreflect.FieldDescriptor
 	fd_MsgCreateDenom_dailyMintingLimit  protoreflect.FieldDescriptor
@@ -898,7 +897,6 @@ func init() {
 	fd_MsgCreateDenom_precision = md_MsgCreateDenom.Fields().ByName("precision")
 	fd_MsgCreateDenom_url = md_MsgCreateDenom.Fields().ByName("url")
 	fd_MsgCreateDenom_maxSupply = md_MsgCreateDenom.Fields().ByName("maxSupply")
-	fd_MsgCreateDenom_supply = md_MsgCreateDenom.Fields().ByName("supply")
 	fd_MsgCreateDenom_canChangeMaxSupply = md_MsgCreateDenom.Fields().ByName("canChangeMaxSupply")
 	fd_MsgCreateDenom_limitDailyMinting = md_MsgCreateDenom.Fields().ByName("limitDailyMinting")
 	fd_MsgCreateDenom_dailyMintingLimit = md_MsgCreateDenom.Fields().ByName("dailyMintingLimit")
@@ -1013,12 +1011,6 @@ func (x *fastReflection_MsgCreateDenom) Range(f func(protoreflect.FieldDescripto
 			return
 		}
 	}
-	if x.Supply != int32(0) {
-		value := protoreflect.ValueOfInt32(x.Supply)
-		if !f(fd_MsgCreateDenom_supply, value) {
-			return
-		}
-	}
 	if x.CanChangeMaxSupply != false {
 		value := protoreflect.ValueOfBool(x.CanChangeMaxSupply)
 		if !f(fd_MsgCreateDenom_canChangeMaxSupply, value) {
@@ -1078,8 +1070,6 @@ func (x *fastReflection_MsgCreateDenom) Has(fd protoreflect.FieldDescriptor) boo
 		return x.Url != ""
 	case "optio.tokenfactory.MsgCreateDenom.maxSupply":
 		return x.MaxSupply != int32(0)
-	case "optio.tokenfactory.MsgCreateDenom.supply":
-		return x.Supply != int32(0)
 	case "optio.tokenfactory.MsgCreateDenom.canChangeMaxSupply":
 		return x.CanChangeMaxSupply != false
 	case "optio.tokenfactory.MsgCreateDenom.limitDailyMinting":
@@ -1120,8 +1110,6 @@ func (x *fastReflection_MsgCreateDenom) Clear(fd protoreflect.FieldDescriptor) {
 		x.Url = ""
 	case "optio.tokenfactory.MsgCreateDenom.maxSupply":
 		x.MaxSupply = int32(0)
-	case "optio.tokenfactory.MsgCreateDenom.supply":
-		x.Supply = int32(0)
 	case "optio.tokenfactory.MsgCreateDenom.canChangeMaxSupply":
 		x.CanChangeMaxSupply = false
 	case "optio.tokenfactory.MsgCreateDenom.limitDailyMinting":
@@ -1168,9 +1156,6 @@ func (x *fastReflection_MsgCreateDenom) Get(descriptor protoreflect.FieldDescrip
 		return protoreflect.ValueOfString(value)
 	case "optio.tokenfactory.MsgCreateDenom.maxSupply":
 		value := x.MaxSupply
-		return protoreflect.ValueOfInt32(value)
-	case "optio.tokenfactory.MsgCreateDenom.supply":
-		value := x.Supply
 		return protoreflect.ValueOfInt32(value)
 	case "optio.tokenfactory.MsgCreateDenom.canChangeMaxSupply":
 		value := x.CanChangeMaxSupply
@@ -1221,8 +1206,6 @@ func (x *fastReflection_MsgCreateDenom) Set(fd protoreflect.FieldDescriptor, val
 		x.Url = value.Interface().(string)
 	case "optio.tokenfactory.MsgCreateDenom.maxSupply":
 		x.MaxSupply = int32(value.Int())
-	case "optio.tokenfactory.MsgCreateDenom.supply":
-		x.Supply = int32(value.Int())
 	case "optio.tokenfactory.MsgCreateDenom.canChangeMaxSupply":
 		x.CanChangeMaxSupply = value.Bool()
 	case "optio.tokenfactory.MsgCreateDenom.limitDailyMinting":
@@ -1267,8 +1250,6 @@ func (x *fastReflection_MsgCreateDenom) Mutable(fd protoreflect.FieldDescriptor)
 		panic(fmt.Errorf("field url of message optio.tokenfactory.MsgCreateDenom is not mutable"))
 	case "optio.tokenfactory.MsgCreateDenom.maxSupply":
 		panic(fmt.Errorf("field maxSupply of message optio.tokenfactory.MsgCreateDenom is not mutable"))
-	case "optio.tokenfactory.MsgCreateDenom.supply":
-		panic(fmt.Errorf("field supply of message optio.tokenfactory.MsgCreateDenom is not mutable"))
 	case "optio.tokenfactory.MsgCreateDenom.canChangeMaxSupply":
 		panic(fmt.Errorf("field canChangeMaxSupply of message optio.tokenfactory.MsgCreateDenom is not mutable"))
 	case "optio.tokenfactory.MsgCreateDenom.limitDailyMinting":
@@ -1305,8 +1286,6 @@ func (x *fastReflection_MsgCreateDenom) NewField(fd protoreflect.FieldDescriptor
 	case "optio.tokenfactory.MsgCreateDenom.url":
 		return protoreflect.ValueOfString("")
 	case "optio.tokenfactory.MsgCreateDenom.maxSupply":
-		return protoreflect.ValueOfInt32(int32(0))
-	case "optio.tokenfactory.MsgCreateDenom.supply":
 		return protoreflect.ValueOfInt32(int32(0))
 	case "optio.tokenfactory.MsgCreateDenom.canChangeMaxSupply":
 		return protoreflect.ValueOfBool(false)
@@ -1413,9 +1392,6 @@ func (x *fastReflection_MsgCreateDenom) ProtoMethods() *protoiface.Methods {
 		if x.MaxSupply != 0 {
 			n += 1 + runtime.Sov(uint64(x.MaxSupply))
 		}
-		if x.Supply != 0 {
-			n += 1 + runtime.Sov(uint64(x.Supply))
-		}
 		if x.CanChangeMaxSupply {
 			n += 2
 		}
@@ -1463,7 +1439,7 @@ func (x *fastReflection_MsgCreateDenom) ProtoMethods() *protoiface.Methods {
 		if x.YearsToHalving != 0 {
 			i = runtime.EncodeVarint(dAtA, i, uint64(x.YearsToHalving))
 			i--
-			dAtA[i] = 0x68
+			dAtA[i] = 0x60
 		}
 		if x.HasHalving {
 			i--
@@ -1473,12 +1449,12 @@ func (x *fastReflection_MsgCreateDenom) ProtoMethods() *protoiface.Methods {
 				dAtA[i] = 0
 			}
 			i--
-			dAtA[i] = 0x60
+			dAtA[i] = 0x58
 		}
 		if x.DailyMintingLimit != 0 {
 			i = runtime.EncodeVarint(dAtA, i, uint64(x.DailyMintingLimit))
 			i--
-			dAtA[i] = 0x58
+			dAtA[i] = 0x50
 		}
 		if x.LimitDailyMinting {
 			i--
@@ -1488,7 +1464,7 @@ func (x *fastReflection_MsgCreateDenom) ProtoMethods() *protoiface.Methods {
 				dAtA[i] = 0
 			}
 			i--
-			dAtA[i] = 0x50
+			dAtA[i] = 0x48
 		}
 		if x.CanChangeMaxSupply {
 			i--
@@ -1497,11 +1473,6 @@ func (x *fastReflection_MsgCreateDenom) ProtoMethods() *protoiface.Methods {
 			} else {
 				dAtA[i] = 0
 			}
-			i--
-			dAtA[i] = 0x48
-		}
-		if x.Supply != 0 {
-			i = runtime.EncodeVarint(dAtA, i, uint64(x.Supply))
 			i--
 			dAtA[i] = 0x40
 		}
@@ -1799,25 +1770,6 @@ func (x *fastReflection_MsgCreateDenom) ProtoMethods() *protoiface.Methods {
 				}
 			case 8:
 				if wireType != 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Supply", wireType)
-				}
-				x.Supply = 0
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					x.Supply |= int32(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-			case 9:
-				if wireType != 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field CanChangeMaxSupply", wireType)
 				}
 				var v int
@@ -1836,7 +1788,7 @@ func (x *fastReflection_MsgCreateDenom) ProtoMethods() *protoiface.Methods {
 					}
 				}
 				x.CanChangeMaxSupply = bool(v != 0)
-			case 10:
+			case 9:
 				if wireType != 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field LimitDailyMinting", wireType)
 				}
@@ -1856,7 +1808,7 @@ func (x *fastReflection_MsgCreateDenom) ProtoMethods() *protoiface.Methods {
 					}
 				}
 				x.LimitDailyMinting = bool(v != 0)
-			case 11:
+			case 10:
 				if wireType != 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field DailyMintingLimit", wireType)
 				}
@@ -1875,7 +1827,7 @@ func (x *fastReflection_MsgCreateDenom) ProtoMethods() *protoiface.Methods {
 						break
 					}
 				}
-			case 12:
+			case 11:
 				if wireType != 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field HasHalving", wireType)
 				}
@@ -1895,7 +1847,7 @@ func (x *fastReflection_MsgCreateDenom) ProtoMethods() *protoiface.Methods {
 					}
 				}
 				x.HasHalving = bool(v != 0)
-			case 13:
+			case 12:
 				if wireType != 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field YearsToHalving", wireType)
 				}
@@ -2310,16 +2262,9 @@ var (
 	fd_MsgUpdateDenom_owner              protoreflect.FieldDescriptor
 	fd_MsgUpdateDenom_denom              protoreflect.FieldDescriptor
 	fd_MsgUpdateDenom_description        protoreflect.FieldDescriptor
-	fd_MsgUpdateDenom_ticker             protoreflect.FieldDescriptor
-	fd_MsgUpdateDenom_precision          protoreflect.FieldDescriptor
 	fd_MsgUpdateDenom_url                protoreflect.FieldDescriptor
 	fd_MsgUpdateDenom_maxSupply          protoreflect.FieldDescriptor
-	fd_MsgUpdateDenom_supply             protoreflect.FieldDescriptor
 	fd_MsgUpdateDenom_canChangeMaxSupply protoreflect.FieldDescriptor
-	fd_MsgUpdateDenom_limitDailyMinting  protoreflect.FieldDescriptor
-	fd_MsgUpdateDenom_dailyMintingLimit  protoreflect.FieldDescriptor
-	fd_MsgUpdateDenom_hasHalving         protoreflect.FieldDescriptor
-	fd_MsgUpdateDenom_yearsToHalving     protoreflect.FieldDescriptor
 )
 
 func init() {
@@ -2328,16 +2273,9 @@ func init() {
 	fd_MsgUpdateDenom_owner = md_MsgUpdateDenom.Fields().ByName("owner")
 	fd_MsgUpdateDenom_denom = md_MsgUpdateDenom.Fields().ByName("denom")
 	fd_MsgUpdateDenom_description = md_MsgUpdateDenom.Fields().ByName("description")
-	fd_MsgUpdateDenom_ticker = md_MsgUpdateDenom.Fields().ByName("ticker")
-	fd_MsgUpdateDenom_precision = md_MsgUpdateDenom.Fields().ByName("precision")
 	fd_MsgUpdateDenom_url = md_MsgUpdateDenom.Fields().ByName("url")
 	fd_MsgUpdateDenom_maxSupply = md_MsgUpdateDenom.Fields().ByName("maxSupply")
-	fd_MsgUpdateDenom_supply = md_MsgUpdateDenom.Fields().ByName("supply")
 	fd_MsgUpdateDenom_canChangeMaxSupply = md_MsgUpdateDenom.Fields().ByName("canChangeMaxSupply")
-	fd_MsgUpdateDenom_limitDailyMinting = md_MsgUpdateDenom.Fields().ByName("limitDailyMinting")
-	fd_MsgUpdateDenom_dailyMintingLimit = md_MsgUpdateDenom.Fields().ByName("dailyMintingLimit")
-	fd_MsgUpdateDenom_hasHalving = md_MsgUpdateDenom.Fields().ByName("hasHalving")
-	fd_MsgUpdateDenom_yearsToHalving = md_MsgUpdateDenom.Fields().ByName("yearsToHalving")
 }
 
 var _ protoreflect.Message = (*fastReflection_MsgUpdateDenom)(nil)
@@ -2423,18 +2361,6 @@ func (x *fastReflection_MsgUpdateDenom) Range(f func(protoreflect.FieldDescripto
 			return
 		}
 	}
-	if x.Ticker != "" {
-		value := protoreflect.ValueOfString(x.Ticker)
-		if !f(fd_MsgUpdateDenom_ticker, value) {
-			return
-		}
-	}
-	if x.Precision != int32(0) {
-		value := protoreflect.ValueOfInt32(x.Precision)
-		if !f(fd_MsgUpdateDenom_precision, value) {
-			return
-		}
-	}
 	if x.Url != "" {
 		value := protoreflect.ValueOfString(x.Url)
 		if !f(fd_MsgUpdateDenom_url, value) {
@@ -2447,39 +2373,9 @@ func (x *fastReflection_MsgUpdateDenom) Range(f func(protoreflect.FieldDescripto
 			return
 		}
 	}
-	if x.Supply != int32(0) {
-		value := protoreflect.ValueOfInt32(x.Supply)
-		if !f(fd_MsgUpdateDenom_supply, value) {
-			return
-		}
-	}
 	if x.CanChangeMaxSupply != false {
 		value := protoreflect.ValueOfBool(x.CanChangeMaxSupply)
 		if !f(fd_MsgUpdateDenom_canChangeMaxSupply, value) {
-			return
-		}
-	}
-	if x.LimitDailyMinting != false {
-		value := protoreflect.ValueOfBool(x.LimitDailyMinting)
-		if !f(fd_MsgUpdateDenom_limitDailyMinting, value) {
-			return
-		}
-	}
-	if x.DailyMintingLimit != int32(0) {
-		value := protoreflect.ValueOfInt32(x.DailyMintingLimit)
-		if !f(fd_MsgUpdateDenom_dailyMintingLimit, value) {
-			return
-		}
-	}
-	if x.HasHalving != false {
-		value := protoreflect.ValueOfBool(x.HasHalving)
-		if !f(fd_MsgUpdateDenom_hasHalving, value) {
-			return
-		}
-	}
-	if x.YearsToHalving != int32(0) {
-		value := protoreflect.ValueOfInt32(x.YearsToHalving)
-		if !f(fd_MsgUpdateDenom_yearsToHalving, value) {
 			return
 		}
 	}
@@ -2504,26 +2400,12 @@ func (x *fastReflection_MsgUpdateDenom) Has(fd protoreflect.FieldDescriptor) boo
 		return x.Denom != ""
 	case "optio.tokenfactory.MsgUpdateDenom.description":
 		return x.Description != ""
-	case "optio.tokenfactory.MsgUpdateDenom.ticker":
-		return x.Ticker != ""
-	case "optio.tokenfactory.MsgUpdateDenom.precision":
-		return x.Precision != int32(0)
 	case "optio.tokenfactory.MsgUpdateDenom.url":
 		return x.Url != ""
 	case "optio.tokenfactory.MsgUpdateDenom.maxSupply":
 		return x.MaxSupply != int32(0)
-	case "optio.tokenfactory.MsgUpdateDenom.supply":
-		return x.Supply != int32(0)
 	case "optio.tokenfactory.MsgUpdateDenom.canChangeMaxSupply":
 		return x.CanChangeMaxSupply != false
-	case "optio.tokenfactory.MsgUpdateDenom.limitDailyMinting":
-		return x.LimitDailyMinting != false
-	case "optio.tokenfactory.MsgUpdateDenom.dailyMintingLimit":
-		return x.DailyMintingLimit != int32(0)
-	case "optio.tokenfactory.MsgUpdateDenom.hasHalving":
-		return x.HasHalving != false
-	case "optio.tokenfactory.MsgUpdateDenom.yearsToHalving":
-		return x.YearsToHalving != int32(0)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: optio.tokenfactory.MsgUpdateDenom"))
@@ -2546,26 +2428,12 @@ func (x *fastReflection_MsgUpdateDenom) Clear(fd protoreflect.FieldDescriptor) {
 		x.Denom = ""
 	case "optio.tokenfactory.MsgUpdateDenom.description":
 		x.Description = ""
-	case "optio.tokenfactory.MsgUpdateDenom.ticker":
-		x.Ticker = ""
-	case "optio.tokenfactory.MsgUpdateDenom.precision":
-		x.Precision = int32(0)
 	case "optio.tokenfactory.MsgUpdateDenom.url":
 		x.Url = ""
 	case "optio.tokenfactory.MsgUpdateDenom.maxSupply":
 		x.MaxSupply = int32(0)
-	case "optio.tokenfactory.MsgUpdateDenom.supply":
-		x.Supply = int32(0)
 	case "optio.tokenfactory.MsgUpdateDenom.canChangeMaxSupply":
 		x.CanChangeMaxSupply = false
-	case "optio.tokenfactory.MsgUpdateDenom.limitDailyMinting":
-		x.LimitDailyMinting = false
-	case "optio.tokenfactory.MsgUpdateDenom.dailyMintingLimit":
-		x.DailyMintingLimit = int32(0)
-	case "optio.tokenfactory.MsgUpdateDenom.hasHalving":
-		x.HasHalving = false
-	case "optio.tokenfactory.MsgUpdateDenom.yearsToHalving":
-		x.YearsToHalving = int32(0)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: optio.tokenfactory.MsgUpdateDenom"))
@@ -2591,36 +2459,15 @@ func (x *fastReflection_MsgUpdateDenom) Get(descriptor protoreflect.FieldDescrip
 	case "optio.tokenfactory.MsgUpdateDenom.description":
 		value := x.Description
 		return protoreflect.ValueOfString(value)
-	case "optio.tokenfactory.MsgUpdateDenom.ticker":
-		value := x.Ticker
-		return protoreflect.ValueOfString(value)
-	case "optio.tokenfactory.MsgUpdateDenom.precision":
-		value := x.Precision
-		return protoreflect.ValueOfInt32(value)
 	case "optio.tokenfactory.MsgUpdateDenom.url":
 		value := x.Url
 		return protoreflect.ValueOfString(value)
 	case "optio.tokenfactory.MsgUpdateDenom.maxSupply":
 		value := x.MaxSupply
 		return protoreflect.ValueOfInt32(value)
-	case "optio.tokenfactory.MsgUpdateDenom.supply":
-		value := x.Supply
-		return protoreflect.ValueOfInt32(value)
 	case "optio.tokenfactory.MsgUpdateDenom.canChangeMaxSupply":
 		value := x.CanChangeMaxSupply
 		return protoreflect.ValueOfBool(value)
-	case "optio.tokenfactory.MsgUpdateDenom.limitDailyMinting":
-		value := x.LimitDailyMinting
-		return protoreflect.ValueOfBool(value)
-	case "optio.tokenfactory.MsgUpdateDenom.dailyMintingLimit":
-		value := x.DailyMintingLimit
-		return protoreflect.ValueOfInt32(value)
-	case "optio.tokenfactory.MsgUpdateDenom.hasHalving":
-		value := x.HasHalving
-		return protoreflect.ValueOfBool(value)
-	case "optio.tokenfactory.MsgUpdateDenom.yearsToHalving":
-		value := x.YearsToHalving
-		return protoreflect.ValueOfInt32(value)
 	default:
 		if descriptor.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: optio.tokenfactory.MsgUpdateDenom"))
@@ -2647,26 +2494,12 @@ func (x *fastReflection_MsgUpdateDenom) Set(fd protoreflect.FieldDescriptor, val
 		x.Denom = value.Interface().(string)
 	case "optio.tokenfactory.MsgUpdateDenom.description":
 		x.Description = value.Interface().(string)
-	case "optio.tokenfactory.MsgUpdateDenom.ticker":
-		x.Ticker = value.Interface().(string)
-	case "optio.tokenfactory.MsgUpdateDenom.precision":
-		x.Precision = int32(value.Int())
 	case "optio.tokenfactory.MsgUpdateDenom.url":
 		x.Url = value.Interface().(string)
 	case "optio.tokenfactory.MsgUpdateDenom.maxSupply":
 		x.MaxSupply = int32(value.Int())
-	case "optio.tokenfactory.MsgUpdateDenom.supply":
-		x.Supply = int32(value.Int())
 	case "optio.tokenfactory.MsgUpdateDenom.canChangeMaxSupply":
 		x.CanChangeMaxSupply = value.Bool()
-	case "optio.tokenfactory.MsgUpdateDenom.limitDailyMinting":
-		x.LimitDailyMinting = value.Bool()
-	case "optio.tokenfactory.MsgUpdateDenom.dailyMintingLimit":
-		x.DailyMintingLimit = int32(value.Int())
-	case "optio.tokenfactory.MsgUpdateDenom.hasHalving":
-		x.HasHalving = value.Bool()
-	case "optio.tokenfactory.MsgUpdateDenom.yearsToHalving":
-		x.YearsToHalving = int32(value.Int())
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: optio.tokenfactory.MsgUpdateDenom"))
@@ -2693,26 +2526,12 @@ func (x *fastReflection_MsgUpdateDenom) Mutable(fd protoreflect.FieldDescriptor)
 		panic(fmt.Errorf("field denom of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
 	case "optio.tokenfactory.MsgUpdateDenom.description":
 		panic(fmt.Errorf("field description of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
-	case "optio.tokenfactory.MsgUpdateDenom.ticker":
-		panic(fmt.Errorf("field ticker of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
-	case "optio.tokenfactory.MsgUpdateDenom.precision":
-		panic(fmt.Errorf("field precision of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
 	case "optio.tokenfactory.MsgUpdateDenom.url":
 		panic(fmt.Errorf("field url of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
 	case "optio.tokenfactory.MsgUpdateDenom.maxSupply":
 		panic(fmt.Errorf("field maxSupply of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
-	case "optio.tokenfactory.MsgUpdateDenom.supply":
-		panic(fmt.Errorf("field supply of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
 	case "optio.tokenfactory.MsgUpdateDenom.canChangeMaxSupply":
 		panic(fmt.Errorf("field canChangeMaxSupply of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
-	case "optio.tokenfactory.MsgUpdateDenom.limitDailyMinting":
-		panic(fmt.Errorf("field limitDailyMinting of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
-	case "optio.tokenfactory.MsgUpdateDenom.dailyMintingLimit":
-		panic(fmt.Errorf("field dailyMintingLimit of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
-	case "optio.tokenfactory.MsgUpdateDenom.hasHalving":
-		panic(fmt.Errorf("field hasHalving of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
-	case "optio.tokenfactory.MsgUpdateDenom.yearsToHalving":
-		panic(fmt.Errorf("field yearsToHalving of message optio.tokenfactory.MsgUpdateDenom is not mutable"))
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: optio.tokenfactory.MsgUpdateDenom"))
@@ -2732,26 +2551,12 @@ func (x *fastReflection_MsgUpdateDenom) NewField(fd protoreflect.FieldDescriptor
 		return protoreflect.ValueOfString("")
 	case "optio.tokenfactory.MsgUpdateDenom.description":
 		return protoreflect.ValueOfString("")
-	case "optio.tokenfactory.MsgUpdateDenom.ticker":
-		return protoreflect.ValueOfString("")
-	case "optio.tokenfactory.MsgUpdateDenom.precision":
-		return protoreflect.ValueOfInt32(int32(0))
 	case "optio.tokenfactory.MsgUpdateDenom.url":
 		return protoreflect.ValueOfString("")
 	case "optio.tokenfactory.MsgUpdateDenom.maxSupply":
 		return protoreflect.ValueOfInt32(int32(0))
-	case "optio.tokenfactory.MsgUpdateDenom.supply":
-		return protoreflect.ValueOfInt32(int32(0))
 	case "optio.tokenfactory.MsgUpdateDenom.canChangeMaxSupply":
 		return protoreflect.ValueOfBool(false)
-	case "optio.tokenfactory.MsgUpdateDenom.limitDailyMinting":
-		return protoreflect.ValueOfBool(false)
-	case "optio.tokenfactory.MsgUpdateDenom.dailyMintingLimit":
-		return protoreflect.ValueOfInt32(int32(0))
-	case "optio.tokenfactory.MsgUpdateDenom.hasHalving":
-		return protoreflect.ValueOfBool(false)
-	case "optio.tokenfactory.MsgUpdateDenom.yearsToHalving":
-		return protoreflect.ValueOfInt32(int32(0))
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: optio.tokenfactory.MsgUpdateDenom"))
@@ -2833,13 +2638,6 @@ func (x *fastReflection_MsgUpdateDenom) ProtoMethods() *protoiface.Methods {
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
-		l = len(x.Ticker)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
-		}
-		if x.Precision != 0 {
-			n += 1 + runtime.Sov(uint64(x.Precision))
-		}
 		l = len(x.Url)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
@@ -2847,23 +2645,8 @@ func (x *fastReflection_MsgUpdateDenom) ProtoMethods() *protoiface.Methods {
 		if x.MaxSupply != 0 {
 			n += 1 + runtime.Sov(uint64(x.MaxSupply))
 		}
-		if x.Supply != 0 {
-			n += 1 + runtime.Sov(uint64(x.Supply))
-		}
 		if x.CanChangeMaxSupply {
 			n += 2
-		}
-		if x.LimitDailyMinting {
-			n += 2
-		}
-		if x.DailyMintingLimit != 0 {
-			n += 1 + runtime.Sov(uint64(x.DailyMintingLimit))
-		}
-		if x.HasHalving {
-			n += 2
-		}
-		if x.YearsToHalving != 0 {
-			n += 1 + runtime.Sov(uint64(x.YearsToHalving))
 		}
 		if x.unknownFields != nil {
 			n += len(x.unknownFields)
@@ -2894,36 +2677,6 @@ func (x *fastReflection_MsgUpdateDenom) ProtoMethods() *protoiface.Methods {
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
-		if x.YearsToHalving != 0 {
-			i = runtime.EncodeVarint(dAtA, i, uint64(x.YearsToHalving))
-			i--
-			dAtA[i] = 0x68
-		}
-		if x.HasHalving {
-			i--
-			if x.HasHalving {
-				dAtA[i] = 1
-			} else {
-				dAtA[i] = 0
-			}
-			i--
-			dAtA[i] = 0x60
-		}
-		if x.DailyMintingLimit != 0 {
-			i = runtime.EncodeVarint(dAtA, i, uint64(x.DailyMintingLimit))
-			i--
-			dAtA[i] = 0x58
-		}
-		if x.LimitDailyMinting {
-			i--
-			if x.LimitDailyMinting {
-				dAtA[i] = 1
-			} else {
-				dAtA[i] = 0
-			}
-			i--
-			dAtA[i] = 0x50
-		}
 		if x.CanChangeMaxSupply {
 			i--
 			if x.CanChangeMaxSupply {
@@ -2932,34 +2685,17 @@ func (x *fastReflection_MsgUpdateDenom) ProtoMethods() *protoiface.Methods {
 				dAtA[i] = 0
 			}
 			i--
-			dAtA[i] = 0x48
-		}
-		if x.Supply != 0 {
-			i = runtime.EncodeVarint(dAtA, i, uint64(x.Supply))
-			i--
-			dAtA[i] = 0x40
+			dAtA[i] = 0x30
 		}
 		if x.MaxSupply != 0 {
 			i = runtime.EncodeVarint(dAtA, i, uint64(x.MaxSupply))
 			i--
-			dAtA[i] = 0x38
+			dAtA[i] = 0x28
 		}
 		if len(x.Url) > 0 {
 			i -= len(x.Url)
 			copy(dAtA[i:], x.Url)
 			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Url)))
-			i--
-			dAtA[i] = 0x32
-		}
-		if x.Precision != 0 {
-			i = runtime.EncodeVarint(dAtA, i, uint64(x.Precision))
-			i--
-			dAtA[i] = 0x28
-		}
-		if len(x.Ticker) > 0 {
-			i -= len(x.Ticker)
-			copy(dAtA[i:], x.Ticker)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Ticker)))
 			i--
 			dAtA[i] = 0x22
 		}
@@ -3131,57 +2867,6 @@ func (x *fastReflection_MsgUpdateDenom) ProtoMethods() *protoiface.Methods {
 				iNdEx = postIndex
 			case 4:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Ticker", wireType)
-				}
-				var stringLen uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				postIndex := iNdEx + intStringLen
-				if postIndex < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if postIndex > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				x.Ticker = string(dAtA[iNdEx:postIndex])
-				iNdEx = postIndex
-			case 5:
-				if wireType != 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Precision", wireType)
-				}
-				x.Precision = 0
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					x.Precision |= int32(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-			case 6:
-				if wireType != 2 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Url", wireType)
 				}
 				var stringLen uint64
@@ -3212,7 +2897,7 @@ func (x *fastReflection_MsgUpdateDenom) ProtoMethods() *protoiface.Methods {
 				}
 				x.Url = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
-			case 7:
+			case 5:
 				if wireType != 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field MaxSupply", wireType)
 				}
@@ -3231,26 +2916,7 @@ func (x *fastReflection_MsgUpdateDenom) ProtoMethods() *protoiface.Methods {
 						break
 					}
 				}
-			case 8:
-				if wireType != 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Supply", wireType)
-				}
-				x.Supply = 0
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					x.Supply |= int32(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-			case 9:
+			case 6:
 				if wireType != 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field CanChangeMaxSupply", wireType)
 				}
@@ -3270,84 +2936,6 @@ func (x *fastReflection_MsgUpdateDenom) ProtoMethods() *protoiface.Methods {
 					}
 				}
 				x.CanChangeMaxSupply = bool(v != 0)
-			case 10:
-				if wireType != 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field LimitDailyMinting", wireType)
-				}
-				var v int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				x.LimitDailyMinting = bool(v != 0)
-			case 11:
-				if wireType != 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field DailyMintingLimit", wireType)
-				}
-				x.DailyMintingLimit = 0
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					x.DailyMintingLimit |= int32(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-			case 12:
-				if wireType != 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field HasHalving", wireType)
-				}
-				var v int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				x.HasHalving = bool(v != 0)
-			case 13:
-				if wireType != 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field YearsToHalving", wireType)
-				}
-				x.YearsToHalving = 0
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					x.YearsToHalving |= int32(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
 			default:
 				iNdEx = preIndex
 				skippy, err := runtime.Skip(dAtA[iNdEx:])
@@ -3838,12 +3426,11 @@ type MsgCreateDenom struct {
 	Precision          int32  `protobuf:"varint,5,opt,name=precision,proto3" json:"precision,omitempty"`
 	Url                string `protobuf:"bytes,6,opt,name=url,proto3" json:"url,omitempty"`
 	MaxSupply          int32  `protobuf:"varint,7,opt,name=maxSupply,proto3" json:"maxSupply,omitempty"`
-	Supply             int32  `protobuf:"varint,8,opt,name=supply,proto3" json:"supply,omitempty"`
-	CanChangeMaxSupply bool   `protobuf:"varint,9,opt,name=canChangeMaxSupply,proto3" json:"canChangeMaxSupply,omitempty"`
-	LimitDailyMinting  bool   `protobuf:"varint,10,opt,name=limitDailyMinting,proto3" json:"limitDailyMinting,omitempty"`
-	DailyMintingLimit  int32  `protobuf:"varint,11,opt,name=dailyMintingLimit,proto3" json:"dailyMintingLimit,omitempty"`
-	HasHalving         bool   `protobuf:"varint,12,opt,name=hasHalving,proto3" json:"hasHalving,omitempty"`
-	YearsToHalving     int32  `protobuf:"varint,13,opt,name=yearsToHalving,proto3" json:"yearsToHalving,omitempty"`
+	CanChangeMaxSupply bool   `protobuf:"varint,8,opt,name=canChangeMaxSupply,proto3" json:"canChangeMaxSupply,omitempty"`
+	LimitDailyMinting  bool   `protobuf:"varint,9,opt,name=limitDailyMinting,proto3" json:"limitDailyMinting,omitempty"`
+	DailyMintingLimit  int32  `protobuf:"varint,10,opt,name=dailyMintingLimit,proto3" json:"dailyMintingLimit,omitempty"`
+	HasHalving         bool   `protobuf:"varint,11,opt,name=hasHalving,proto3" json:"hasHalving,omitempty"`
+	YearsToHalving     int32  `protobuf:"varint,12,opt,name=yearsToHalving,proto3" json:"yearsToHalving,omitempty"`
 }
 
 func (x *MsgCreateDenom) Reset() {
@@ -3911,13 +3498,6 @@ func (x *MsgCreateDenom) GetUrl() string {
 func (x *MsgCreateDenom) GetMaxSupply() int32 {
 	if x != nil {
 		return x.MaxSupply
-	}
-	return 0
-}
-
-func (x *MsgCreateDenom) GetSupply() int32 {
-	if x != nil {
-		return x.Supply
 	}
 	return 0
 }
@@ -3991,16 +3571,9 @@ type MsgUpdateDenom struct {
 	Owner              string `protobuf:"bytes,1,opt,name=owner,proto3" json:"owner,omitempty"`
 	Denom              string `protobuf:"bytes,2,opt,name=denom,proto3" json:"denom,omitempty"`
 	Description        string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	Ticker             string `protobuf:"bytes,4,opt,name=ticker,proto3" json:"ticker,omitempty"`
-	Precision          int32  `protobuf:"varint,5,opt,name=precision,proto3" json:"precision,omitempty"`
-	Url                string `protobuf:"bytes,6,opt,name=url,proto3" json:"url,omitempty"`
-	MaxSupply          int32  `protobuf:"varint,7,opt,name=maxSupply,proto3" json:"maxSupply,omitempty"`
-	Supply             int32  `protobuf:"varint,8,opt,name=supply,proto3" json:"supply,omitempty"`
-	CanChangeMaxSupply bool   `protobuf:"varint,9,opt,name=canChangeMaxSupply,proto3" json:"canChangeMaxSupply,omitempty"`
-	LimitDailyMinting  bool   `protobuf:"varint,10,opt,name=limitDailyMinting,proto3" json:"limitDailyMinting,omitempty"`
-	DailyMintingLimit  int32  `protobuf:"varint,11,opt,name=dailyMintingLimit,proto3" json:"dailyMintingLimit,omitempty"`
-	HasHalving         bool   `protobuf:"varint,12,opt,name=hasHalving,proto3" json:"hasHalving,omitempty"`
-	YearsToHalving     int32  `protobuf:"varint,13,opt,name=yearsToHalving,proto3" json:"yearsToHalving,omitempty"`
+	Url                string `protobuf:"bytes,4,opt,name=url,proto3" json:"url,omitempty"`
+	MaxSupply          int32  `protobuf:"varint,5,opt,name=maxSupply,proto3" json:"maxSupply,omitempty"`
+	CanChangeMaxSupply bool   `protobuf:"varint,6,opt,name=canChangeMaxSupply,proto3" json:"canChangeMaxSupply,omitempty"`
 }
 
 func (x *MsgUpdateDenom) Reset() {
@@ -4044,20 +3617,6 @@ func (x *MsgUpdateDenom) GetDescription() string {
 	return ""
 }
 
-func (x *MsgUpdateDenom) GetTicker() string {
-	if x != nil {
-		return x.Ticker
-	}
-	return ""
-}
-
-func (x *MsgUpdateDenom) GetPrecision() int32 {
-	if x != nil {
-		return x.Precision
-	}
-	return 0
-}
-
 func (x *MsgUpdateDenom) GetUrl() string {
 	if x != nil {
 		return x.Url
@@ -4072,46 +3631,11 @@ func (x *MsgUpdateDenom) GetMaxSupply() int32 {
 	return 0
 }
 
-func (x *MsgUpdateDenom) GetSupply() int32 {
-	if x != nil {
-		return x.Supply
-	}
-	return 0
-}
-
 func (x *MsgUpdateDenom) GetCanChangeMaxSupply() bool {
 	if x != nil {
 		return x.CanChangeMaxSupply
 	}
 	return false
-}
-
-func (x *MsgUpdateDenom) GetLimitDailyMinting() bool {
-	if x != nil {
-		return x.LimitDailyMinting
-	}
-	return false
-}
-
-func (x *MsgUpdateDenom) GetDailyMintingLimit() int32 {
-	if x != nil {
-		return x.DailyMintingLimit
-	}
-	return 0
-}
-
-func (x *MsgUpdateDenom) GetHasHalving() bool {
-	if x != nil {
-		return x.HasHalving
-	}
-	return false
-}
-
-func (x *MsgUpdateDenom) GetYearsToHalving() int32 {
-	if x != nil {
-		return x.YearsToHalving
-	}
-	return 0
 }
 
 type MsgUpdateDenomResponse struct {
@@ -4169,7 +3693,7 @@ var file_optio_tokenfactory_tx_proto_rawDesc = []byte{
 	0x70, 0x74, 0x69, 0x6f, 0x2f, 0x78, 0x2f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74,
 	0x6f, 0x72, 0x79, 0x2f, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72,
 	0x61, 0x6d, 0x73, 0x22, 0x19, 0x0a, 0x17, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xbc,
+	0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xa4,
 	0x03, 0x0a, 0x0e, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f,
 	0x6d, 0x12, 0x14, 0x0a, 0x05, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
 	0x52, 0x05, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x64, 0x65, 0x6e, 0x6f, 0x6d,
@@ -4182,84 +3706,67 @@ var file_optio_tokenfactory_tx_proto_rawDesc = []byte{
 	0x69, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x72, 0x6c, 0x18, 0x06, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x03, 0x75, 0x72, 0x6c, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61, 0x78, 0x53, 0x75,
 	0x70, 0x70, 0x6c, 0x79, 0x18, 0x07, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x6d, 0x61, 0x78, 0x53,
-	0x75, 0x70, 0x70, 0x6c, 0x79, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x18,
-	0x08, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x73, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x12, 0x2e, 0x0a,
-	0x12, 0x63, 0x61, 0x6e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x4d, 0x61, 0x78, 0x53, 0x75, 0x70,
-	0x70, 0x6c, 0x79, 0x18, 0x09, 0x20, 0x01, 0x28, 0x08, 0x52, 0x12, 0x63, 0x61, 0x6e, 0x43, 0x68,
-	0x61, 0x6e, 0x67, 0x65, 0x4d, 0x61, 0x78, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x12, 0x2c, 0x0a,
-	0x11, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e, 0x74, 0x69,
-	0x6e, 0x67, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x08, 0x52, 0x11, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x44,
-	0x61, 0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x12, 0x2c, 0x0a, 0x11, 0x64,
-	0x61, 0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x4c, 0x69, 0x6d, 0x69, 0x74,
-	0x18, 0x0b, 0x20, 0x01, 0x28, 0x05, 0x52, 0x11, 0x64, 0x61, 0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e,
-	0x74, 0x69, 0x6e, 0x67, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x1e, 0x0a, 0x0a, 0x68, 0x61, 0x73,
-	0x48, 0x61, 0x6c, 0x76, 0x69, 0x6e, 0x67, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0a, 0x68,
-	0x61, 0x73, 0x48, 0x61, 0x6c, 0x76, 0x69, 0x6e, 0x67, 0x12, 0x26, 0x0a, 0x0e, 0x79, 0x65, 0x61,
-	0x72, 0x73, 0x54, 0x6f, 0x48, 0x61, 0x6c, 0x76, 0x69, 0x6e, 0x67, 0x18, 0x0d, 0x20, 0x01, 0x28,
-	0x05, 0x52, 0x0e, 0x79, 0x65, 0x61, 0x72, 0x73, 0x54, 0x6f, 0x48, 0x61, 0x6c, 0x76, 0x69, 0x6e,
-	0x67, 0x3a, 0x0a, 0x82, 0xe7, 0xb0, 0x2a, 0x05, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x22, 0x18, 0x0a,
-	0x16, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xbc, 0x03, 0x0a, 0x0e, 0x4d, 0x73, 0x67, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x12, 0x14, 0x0a, 0x05, 0x6f, 0x77,
-	0x6e, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x6f, 0x77, 0x6e, 0x65, 0x72,
-	0x12, 0x14, 0x0a, 0x05, 0x64, 0x65, 0x6e, 0x6f, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x05, 0x64, 0x65, 0x6e, 0x6f, 0x6d, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69,
-	0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73,
-	0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x16, 0x0a, 0x06, 0x74, 0x69, 0x63, 0x6b,
-	0x65, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x74, 0x69, 0x63, 0x6b, 0x65, 0x72,
-	0x12, 0x1c, 0x0a, 0x09, 0x70, 0x72, 0x65, 0x63, 0x69, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20,
-	0x01, 0x28, 0x05, 0x52, 0x09, 0x70, 0x72, 0x65, 0x63, 0x69, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x10,
-	0x0a, 0x03, 0x75, 0x72, 0x6c, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x72, 0x6c,
-	0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61, 0x78, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x18, 0x07, 0x20,
-	0x01, 0x28, 0x05, 0x52, 0x09, 0x6d, 0x61, 0x78, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x12, 0x16,
-	0x0a, 0x06, 0x73, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x18, 0x08, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06,
-	0x73, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x12, 0x2e, 0x0a, 0x12, 0x63, 0x61, 0x6e, 0x43, 0x68, 0x61,
-	0x6e, 0x67, 0x65, 0x4d, 0x61, 0x78, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x18, 0x09, 0x20, 0x01,
-	0x28, 0x08, 0x52, 0x12, 0x63, 0x61, 0x6e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x4d, 0x61, 0x78,
-	0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x12, 0x2c, 0x0a, 0x11, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x44,
-	0x61, 0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x0a, 0x20, 0x01, 0x28,
-	0x08, 0x52, 0x11, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e,
-	0x74, 0x69, 0x6e, 0x67, 0x12, 0x2c, 0x0a, 0x11, 0x64, 0x61, 0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e,
-	0x74, 0x69, 0x6e, 0x67, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x11, 0x64, 0x61, 0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x4c, 0x69, 0x6d,
-	0x69, 0x74, 0x12, 0x1e, 0x0a, 0x0a, 0x68, 0x61, 0x73, 0x48, 0x61, 0x6c, 0x76, 0x69, 0x6e, 0x67,
-	0x18, 0x0c, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0a, 0x68, 0x61, 0x73, 0x48, 0x61, 0x6c, 0x76, 0x69,
-	0x6e, 0x67, 0x12, 0x26, 0x0a, 0x0e, 0x79, 0x65, 0x61, 0x72, 0x73, 0x54, 0x6f, 0x48, 0x61, 0x6c,
-	0x76, 0x69, 0x6e, 0x67, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0e, 0x79, 0x65, 0x61, 0x72,
-	0x73, 0x54, 0x6f, 0x48, 0x61, 0x6c, 0x76, 0x69, 0x6e, 0x67, 0x3a, 0x0a, 0x82, 0xe7, 0xb0, 0x2a,
-	0x05, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x22, 0x18, 0x0a, 0x16, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x32, 0xac, 0x02, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x60, 0x0a, 0x0c, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x23, 0x2e, 0x6f, 0x70, 0x74, 0x69, 0x6f,
-	0x2e, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x4d, 0x73,
-	0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x1a, 0x2b, 0x2e,
-	0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2e, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f,
-	0x72, 0x79, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61,
-	0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x5d, 0x0a, 0x0b, 0x43, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x12, 0x22, 0x2e, 0x6f, 0x70, 0x74, 0x69,
-	0x6f, 0x2e, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x4d,
-	0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x1a, 0x2a, 0x2e,
-	0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2e, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f,
-	0x72, 0x79, 0x2e, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f,
-	0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x5d, 0x0a, 0x0b, 0x55, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x12, 0x22, 0x2e, 0x6f, 0x70, 0x74, 0x69, 0x6f,
-	0x2e, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x4d, 0x73,
-	0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x1a, 0x2a, 0x2e, 0x6f,
-	0x70, 0x74, 0x69, 0x6f, 0x2e, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72,
-	0x79, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42,
-	0xa8, 0x01, 0x0a, 0x16, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2e, 0x74, 0x6f,
-	0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x42, 0x07, 0x54, 0x78, 0x50, 0x72,
-	0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x1c, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69,
-	0x2f, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74,
-	0x6f, 0x72, 0x79, 0xa2, 0x02, 0x03, 0x4f, 0x54, 0x58, 0xaa, 0x02, 0x12, 0x4f, 0x70, 0x74, 0x69,
-	0x6f, 0x2e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0xca, 0x02,
-	0x12, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x5c, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74,
-	0x6f, 0x72, 0x79, 0xe2, 0x02, 0x1e, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x5c, 0x54, 0x6f, 0x6b, 0x65,
-	0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61,
-	0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x13, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x3a, 0x3a, 0x54, 0x6f,
-	0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x75, 0x70, 0x70, 0x6c, 0x79, 0x12, 0x2e, 0x0a, 0x12, 0x63, 0x61, 0x6e, 0x43, 0x68, 0x61, 0x6e,
+	0x67, 0x65, 0x4d, 0x61, 0x78, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x18, 0x08, 0x20, 0x01, 0x28,
+	0x08, 0x52, 0x12, 0x63, 0x61, 0x6e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x4d, 0x61, 0x78, 0x53,
+	0x75, 0x70, 0x70, 0x6c, 0x79, 0x12, 0x2c, 0x0a, 0x11, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x44, 0x61,
+	0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x09, 0x20, 0x01, 0x28, 0x08,
+	0x52, 0x11, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e, 0x74,
+	0x69, 0x6e, 0x67, 0x12, 0x2c, 0x0a, 0x11, 0x64, 0x61, 0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e, 0x74,
+	0x69, 0x6e, 0x67, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x05, 0x52, 0x11,
+	0x64, 0x61, 0x69, 0x6c, 0x79, 0x4d, 0x69, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x4c, 0x69, 0x6d, 0x69,
+	0x74, 0x12, 0x1e, 0x0a, 0x0a, 0x68, 0x61, 0x73, 0x48, 0x61, 0x6c, 0x76, 0x69, 0x6e, 0x67, 0x18,
+	0x0b, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0a, 0x68, 0x61, 0x73, 0x48, 0x61, 0x6c, 0x76, 0x69, 0x6e,
+	0x67, 0x12, 0x26, 0x0a, 0x0e, 0x79, 0x65, 0x61, 0x72, 0x73, 0x54, 0x6f, 0x48, 0x61, 0x6c, 0x76,
+	0x69, 0x6e, 0x67, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0e, 0x79, 0x65, 0x61, 0x72, 0x73,
+	0x54, 0x6f, 0x48, 0x61, 0x6c, 0x76, 0x69, 0x6e, 0x67, 0x3a, 0x0a, 0x82, 0xe7, 0xb0, 0x2a, 0x05,
+	0x6f, 0x77, 0x6e, 0x65, 0x72, 0x22, 0x18, 0x0a, 0x16, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0xca, 0x01, 0x0a, 0x0e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e,
+	0x6f, 0x6d, 0x12, 0x14, 0x0a, 0x05, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x05, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x64, 0x65, 0x6e, 0x6f,
+	0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x64, 0x65, 0x6e, 0x6f, 0x6d, 0x12, 0x20,
+	0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e,
+	0x12, 0x10, 0x0a, 0x03, 0x75, 0x72, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75,
+	0x72, 0x6c, 0x12, 0x1c, 0x0a, 0x09, 0x6d, 0x61, 0x78, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x18,
+	0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x6d, 0x61, 0x78, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x79,
+	0x12, 0x2e, 0x0a, 0x12, 0x63, 0x61, 0x6e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x4d, 0x61, 0x78,
+	0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x18, 0x06, 0x20, 0x01, 0x28, 0x08, 0x52, 0x12, 0x63, 0x61,
+	0x6e, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x4d, 0x61, 0x78, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x79,
+	0x3a, 0x0a, 0x82, 0xe7, 0xb0, 0x2a, 0x05, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x22, 0x18, 0x0a, 0x16,
+	0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xac, 0x02, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x60,
+	0x0a, 0x0c, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x23,
+	0x2e, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2e, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74,
+	0x6f, 0x72, 0x79, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72,
+	0x61, 0x6d, 0x73, 0x1a, 0x2b, 0x2e, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2e, 0x74, 0x6f, 0x6b, 0x65,
+	0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x5d, 0x0a, 0x0b, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x12,
+	0x22, 0x2e, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2e, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63,
+	0x74, 0x6f, 0x72, 0x79, 0x2e, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x65,
+	0x6e, 0x6f, 0x6d, 0x1a, 0x2a, 0x2e, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2e, 0x74, 0x6f, 0x6b, 0x65,
+	0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x5d, 0x0a, 0x0b, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x12, 0x22,
+	0x2e, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2e, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74,
+	0x6f, 0x72, 0x79, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x44, 0x65, 0x6e,
+	0x6f, 0x6d, 0x1a, 0x2a, 0x2e, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2e, 0x74, 0x6f, 0x6b, 0x65, 0x6e,
+	0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x1a, 0x05,
+	0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42, 0xa8, 0x01, 0x0a, 0x16, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x70,
+	0x74, 0x69, 0x6f, 0x2e, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79,
+	0x42, 0x07, 0x54, 0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x1c, 0x6f, 0x70, 0x74,
+	0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x2f, 0x74, 0x6f, 0x6b,
+	0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0xa2, 0x02, 0x03, 0x4f, 0x54, 0x58, 0xaa,
+	0x02, 0x12, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x2e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63,
+	0x74, 0x6f, 0x72, 0x79, 0xca, 0x02, 0x12, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x5c, 0x54, 0x6f, 0x6b,
+	0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0xe2, 0x02, 0x1e, 0x4f, 0x70, 0x74, 0x69,
+	0x6f, 0x5c, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79, 0x5c, 0x47,
+	0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x13, 0x4f, 0x70, 0x74,
+	0x69, 0x6f, 0x3a, 0x3a, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x79,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (

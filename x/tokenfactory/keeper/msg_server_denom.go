@@ -30,12 +30,19 @@ func (k msgServer) CreateDenom(goCtx context.Context, msg *types.MsgCreateDenom)
 		Precision:          msg.Precision,
 		Url:                msg.Url,
 		MaxSupply:          msg.MaxSupply,
-		Supply:             msg.Supply,
 		CanChangeMaxSupply: msg.CanChangeMaxSupply,
 		LimitDailyMinting:  msg.LimitDailyMinting,
 		DailyMintingLimit:  msg.DailyMintingLimit,
 		HasHalving:         msg.HasHalving,
 		YearsToHalving:     msg.YearsToHalving,
+		Supply:             0,
+	}
+
+	if !msg.HasHalving {
+		denom.YearsToHalving = 0
+	}
+	if !msg.LimitDailyMinting {
+		denom.DailyMintingLimit = 0
 	}
 
 	k.SetDenom(
@@ -54,7 +61,7 @@ func (k msgServer) UpdateDenom(goCtx context.Context, msg *types.MsgUpdateDenom)
 		msg.Denom,
 	)
 	if !isFound {
-		return nil, errorsmod.Wrap(sdkerrors.ErrKeyNotFound, "index not set")
+		return nil, errorsmod.Wrap(sdkerrors.ErrKeyNotFound, "Denom not found")
 	}
 
 	// Checks if the msg owner is the same as the current owner
@@ -62,20 +69,19 @@ func (k msgServer) UpdateDenom(goCtx context.Context, msg *types.MsgUpdateDenom)
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, "incorrect owner")
 	}
 
+	maxSupply, canChangeMaxSupply := valFound.MaxSupply, valFound.CanChangeMaxSupply
+	if valFound.CanChangeMaxSupply {
+		maxSupply = msg.MaxSupply
+		canChangeMaxSupply = msg.CanChangeMaxSupply
+	}
+
 	var denom = types.Denom{
 		Owner:              msg.Owner,
 		Denom:              msg.Denom,
 		Description:        msg.Description,
-		Ticker:             msg.Ticker,
-		Precision:          msg.Precision,
 		Url:                msg.Url,
-		MaxSupply:          msg.MaxSupply,
-		Supply:             msg.Supply,
-		CanChangeMaxSupply: msg.CanChangeMaxSupply,
-		LimitDailyMinting:  msg.LimitDailyMinting,
-		DailyMintingLimit:  msg.DailyMintingLimit,
-		HasHalving:         msg.HasHalving,
-		YearsToHalving:     msg.YearsToHalving,
+		MaxSupply:          maxSupply,
+		CanChangeMaxSupply: canChangeMaxSupply,
 	}
 
 	k.SetDenom(ctx, denom)

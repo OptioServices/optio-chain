@@ -32,7 +32,6 @@ func NewMsgCreateDenom(
 		Precision:          precision,
 		Url:                url,
 		MaxSupply:          maxSupply,
-		Supply:             supply,
 		CanChangeMaxSupply: canChangeMaxSupply,
 		LimitDailyMinting:  limitDailyMinting,
 		DailyMintingLimit:  dailyMintingLimit,
@@ -45,6 +44,16 @@ func (msg *MsgCreateDenom) ValidateBasic() error {
 	_, err := sdk.AccAddressFromBech32(msg.Owner)
 	if err != nil {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid owner address (%s)", err)
+	}
+	tickerLength := len(msg.Ticker)
+	if tickerLength < 3 {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "Ticker length must be at least 3 chars long")
+	}
+	if tickerLength > 10 {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "Ticker length must be 10 chars long maximum")
+	}
+	if msg.MaxSupply == 0 {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "Max Supply must be greater than 0")
 	}
 	return nil
 }
@@ -71,16 +80,9 @@ func NewMsgUpdateDenom(
 		Owner:              owner,
 		Denom:              denom,
 		Description:        description,
-		Ticker:             ticker,
-		Precision:          precision,
 		Url:                url,
 		MaxSupply:          maxSupply,
-		Supply:             supply,
 		CanChangeMaxSupply: canChangeMaxSupply,
-		LimitDailyMinting:  limitDailyMinting,
-		DailyMintingLimit:  dailyMintingLimit,
-		HasHalving:         hasHalving,
-		YearsToHalving:     yearsToHalving,
 	}
 }
 
@@ -88,6 +90,9 @@ func (msg *MsgUpdateDenom) ValidateBasic() error {
 	_, err := sdk.AccAddressFromBech32(msg.Owner)
 	if err != nil {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid owner address (%s)", err)
+	}
+	if msg.MaxSupply == 0 {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "Max Supply must be greater than 0")
 	}
 	return nil
 }

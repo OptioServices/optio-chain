@@ -48,12 +48,11 @@ message MsgCreateDenom {
   int32  precision          =  5;
   string url                =  6;
   int32  maxSupply          =  7;
-  int32  supply             =  8;
-  bool   canChangeMaxSupply =  9;
-  bool   limitDailyMinting  = 10;
-  int32  dailyMintingLimit  = 11;
-  bool   hasHalving         = 12;
-  int32  yearsToHalving     = 13;
+  bool   canChangeMaxSupply =  8;
+  bool   limitDailyMinting  =  9;
+  int32  dailyMintingLimit  = 10;
+  bool   hasHalving         = 11;
+  int32  yearsToHalving     = 12;
 }
 
 message MsgCreateDenomResponse {}
@@ -63,17 +62,11 @@ message MsgUpdateDenom {
   string owner              =  1;
   string denom              =  2;
   string description        =  3;
-  string ticker             =  4;
-  int32  precision          =  5;
-  string url                =  6;
-  int32  maxSupply          =  7;
-  int32  supply             =  8;
-  bool   canChangeMaxSupply =  9;
-  bool   limitDailyMinting  = 10;
-  int32  dailyMintingLimit  = 11;
-  bool   hasHalving         = 12;
-  int32  yearsToHalving     = 13;
+  string url                =  4;
+  int32  maxSupply          =  5;
+  bool   canChangeMaxSupply =  6;
 }
 
 message MsgUpdateDenomResponse {}
+
 

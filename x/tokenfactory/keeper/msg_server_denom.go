@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"context"
+	"time"
 
 	"optio/x/tokenfactory/types"
 
@@ -22,6 +23,16 @@ func (k msgServer) CreateDenom(goCtx context.Context, msg *types.MsgCreateDenom)
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "index already set")
 	}
 
+	dailyMintingLimit := msg.DailyMintingLimit
+	if msg.LimitDailyMinting && msg.HasYearlyHalving {
+		now := time.Now()
+		if (isLeapYear(now.Year()) && (now.Month() <= 2 && now.Day() <= 29)) || (isLeapYear(now.AddDate(1, 0, 0).Year()) && (now.Month() > 2)) {
+			dailyMintingLimit = msg.MaxSupply / 2 / 366
+		} else {
+			dailyMintingLimit = msg.MaxSupply / 2 / 365
+		}
+	}
+
 	var denom = types.Denom{
 		Owner:              msg.Owner,
 		Denom:              msg.Denom,
@@ -32,15 +43,15 @@ func (k msgServer) CreateDenom(goCtx context.Context, msg *types.MsgCreateDenom)
 		MaxSupply:          msg.MaxSupply,
 		CanChangeMaxSupply: msg.CanChangeMaxSupply,
 		LimitDailyMinting:  msg.LimitDailyMinting,
-		DailyMintingLimit:  msg.DailyMintingLimit,
-		HasHalving:         msg.HasHalving,
-		YearsToHalving:     msg.YearsToHalving,
+		DailyMintingLimit:  dailyMintingLimit,
+		MintedToday:        0,
+		LastMintDate:       "1970-01-01",
+		HasYearlyHalving:   msg.HasYearlyHalving,
+		NextHalvingDate:    time.Now().Format("1970-01-01"),
+		DateCreated:        time.Now().Format("1970-01-01"),
 		Supply:             0,
 	}
 
-	if !msg.HasHalving {
-		denom.YearsToHalving = 0
-	}
 	if !msg.LimitDailyMinting {
 		denom.DailyMintingLimit = 0
 	}

@@ -8,7 +8,7 @@ import (
 
 var _ sdk.Msg = &MsgMintAndSendTokens{}
 
-func NewMsgMintAndSendTokens(owner string, denom string, amount int32, recipient string) *MsgMintAndSendTokens {
+func NewMsgMintAndSendTokens(owner string, denom string, amount int64, recipient string) *MsgMintAndSendTokens {
 	return &MsgMintAndSendTokens{
 		Owner:     owner,
 		Denom:     denom,

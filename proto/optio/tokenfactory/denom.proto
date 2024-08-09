@@ -9,13 +9,17 @@ message Denom {
   string ticker = 3; 
   int32 precision = 4; 
   string url = 5; 
-  int32 maxSupply = 6; 
-  int32 supply = 7; 
+  int64 maxSupply = 6; 
+  int64 supply = 7; 
   bool canChangeMaxSupply = 8; 
   bool limitDailyMinting = 9; 
-  int32 dailyMintingLimit = 10; 
-  bool hasHalving = 11; 
-  int32 yearsToHalving = 12; 
-  string owner = 13;
+  int64 dailyMintingLimit = 10;
+  string lastMintDate = 11;
+  int64 mintedToday = 12;
+  bool hasYearlyHalving = 13; 
+  int32 timesHalved =15;
+  string nextHalvingDate = 16;
+  string dateCreated = 17;
+  string owner = 18;
 }
 

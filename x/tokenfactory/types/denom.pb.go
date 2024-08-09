@@ -28,14 +28,18 @@ type Denom struct {
 	Ticker             string `protobuf:"bytes,3,opt,name=ticker,proto3" json:"ticker,omitempty"`
 	Precision          int32  `protobuf:"varint,4,opt,name=precision,proto3" json:"precision,omitempty"`
 	Url                string `protobuf:"bytes,5,opt,name=url,proto3" json:"url,omitempty"`
-	MaxSupply          int32  `protobuf:"varint,6,opt,name=maxSupply,proto3" json:"maxSupply,omitempty"`
-	Supply             int32  `protobuf:"varint,7,opt,name=supply,proto3" json:"supply,omitempty"`
+	MaxSupply          int64  `protobuf:"varint,6,opt,name=maxSupply,proto3" json:"maxSupply,omitempty"`
+	Supply             int64  `protobuf:"varint,7,opt,name=supply,proto3" json:"supply,omitempty"`
 	CanChangeMaxSupply bool   `protobuf:"varint,8,opt,name=canChangeMaxSupply,proto3" json:"canChangeMaxSupply,omitempty"`
 	LimitDailyMinting  bool   `protobuf:"varint,9,opt,name=limitDailyMinting,proto3" json:"limitDailyMinting,omitempty"`
-	DailyMintingLimit  int32  `protobuf:"varint,10,opt,name=dailyMintingLimit,proto3" json:"dailyMintingLimit,omitempty"`
-	HasHalving         bool   `protobuf:"varint,11,opt,name=hasHalving,proto3" json:"hasHalving,omitempty"`
-	YearsToHalving     int32  `protobuf:"varint,12,opt,name=yearsToHalving,proto3" json:"yearsToHalving,omitempty"`
-	Owner              string `protobuf:"bytes,13,opt,name=owner,proto3" json:"owner,omitempty"`
+	DailyMintingLimit  int64  `protobuf:"varint,10,opt,name=dailyMintingLimit,proto3" json:"dailyMintingLimit,omitempty"`
+	LastMintDate       string `protobuf:"bytes,11,opt,name=lastMintDate,proto3" json:"lastMintDate,omitempty"`
+	MintedToday        int64  `protobuf:"varint,12,opt,name=mintedToday,proto3" json:"mintedToday,omitempty"`
+	HasYearlyHalving   bool   `protobuf:"varint,13,opt,name=hasYearlyHalving,proto3" json:"hasYearlyHalving,omitempty"`
+	TimesHalved        int32  `protobuf:"varint,15,opt,name=timesHalved,proto3" json:"timesHalved,omitempty"`
+	NextHalvingDate    string `protobuf:"bytes,16,opt,name=nextHalvingDate,proto3" json:"nextHalvingDate,omitempty"`
+	DateCreated        string `protobuf:"bytes,17,opt,name=dateCreated,proto3" json:"dateCreated,omitempty"`
+	Owner              string `protobuf:"bytes,18,opt,name=owner,proto3" json:"owner,omitempty"`
 }
 
 func (m *Denom) Reset()         { *m = Denom{} }
@@ -106,14 +110,14 @@ func (m *Denom) GetUrl() string {
 	return ""
 }
 
-func (m *Denom) GetMaxSupply() int32 {
+func (m *Denom) GetMaxSupply() int64 {
 	if m != nil {
 		return m.MaxSupply
 	}
 	return 0
 }
 
-func (m *Denom) GetSupply() int32 {
+func (m *Denom) GetSupply() int64 {
 	if m != nil {
 		return m.Supply
 	}
@@ -134,25 +138,53 @@ func (m *Denom) GetLimitDailyMinting() bool {
 	return false
 }
 
-func (m *Denom) GetDailyMintingLimit() int32 {
+func (m *Denom) GetDailyMintingLimit() int64 {
 	if m != nil {
 		return m.DailyMintingLimit
 	}
 	return 0
 }
 
-func (m *Denom) GetHasHalving() bool {
+func (m *Denom) GetLastMintDate() string {
 	if m != nil {
-		return m.HasHalving
+		return m.LastMintDate
+	}
+	return ""
+}
+
+func (m *Denom) GetMintedToday() int64 {
+	if m != nil {
+		return m.MintedToday
+	}
+	return 0
+}
+
+func (m *Denom) GetHasYearlyHalving() bool {
+	if m != nil {
+		return m.HasYearlyHalving
 	}
 	return false
 }
 
-func (m *Denom) GetYearsToHalving() int32 {
+func (m *Denom) GetTimesHalved() int32 {
 	if m != nil {
-		return m.YearsToHalving
+		return m.TimesHalved
 	}
 	return 0
+}
+
+func (m *Denom) GetNextHalvingDate() string {
+	if m != nil {
+		return m.NextHalvingDate
+	}
+	return ""
+}
+
+func (m *Denom) GetDateCreated() string {
+	if m != nil {
+		return m.DateCreated
+	}
+	return ""
 }
 
 func (m *Denom) GetOwner() string {
@@ -169,28 +201,32 @@ func init() {
 func init() { proto.RegisterFile("optio/tokenfactory/denom.proto", fileDescriptor_d845d0622df93aea) }
 
 var fileDescriptor_d845d0622df93aea = []byte{
-	// 328 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x91, 0xc1, 0x4e, 0x32, 0x31,
-	0x14, 0x85, 0xe9, 0xcf, 0x3f, 0x08, 0x17, 0x35, 0xda, 0x18, 0xd3, 0x18, 0xd3, 0x4c, 0x5c, 0x18,
-	0x16, 0x06, 0x16, 0xfa, 0x04, 0xca, 0xc2, 0x85, 0x6c, 0xd0, 0x95, 0xbb, 0x3a, 0x54, 0x68, 0x18,
-	0xda, 0x49, 0x5b, 0x94, 0x79, 0x0b, 0xdf, 0xc2, 0x57, 0x71, 0xc9, 0xd2, 0xa5, 0x81, 0x17, 0x31,
-	0xbd, 0x83, 0x38, 0x8a, 0xbb, 0x39, 0xe7, 0x3b, 0xe7, 0x4e, 0x93, 0x03, 0xdc, 0x64, 0x5e, 0x99,
-	0x8e, 0x37, 0x63, 0xa9, 0x1f, 0x45, 0xe2, 0x8d, 0xcd, 0x3b, 0x03, 0xa9, 0xcd, 0xa4, 0x9d, 0x59,
-	0xe3, 0x0d, 0xa5, 0xc8, 0xdb, 0x65, 0x7e, 0xf2, 0x5a, 0x85, 0xa8, 0x1b, 0x32, 0xf4, 0x00, 0x22,
-	0x0c, 0x33, 0x12, 0x93, 0x56, 0xa3, 0x5f, 0x08, 0x1a, 0x43, 0x73, 0x20, 0x5d, 0x62, 0x55, 0xa8,
-	0x6a, 0xf6, 0x0f, 0x59, 0xd9, 0xa2, 0x87, 0x50, 0xf3, 0x2a, 0x19, 0x4b, 0xcb, 0xaa, 0x08, 0x57,
-	0x8a, 0x1e, 0x43, 0x23, 0xb3, 0x32, 0x51, 0x2e, 0xf4, 0xfe, 0xc7, 0xa4, 0x15, 0xf5, 0xbf, 0x0d,
-	0xba, 0x07, 0xd5, 0xa9, 0x4d, 0x59, 0x84, 0x95, 0xf0, 0x19, 0xf2, 0x13, 0x31, 0xbb, 0x9d, 0x66,
-	0x59, 0x9a, 0xb3, 0x5a, 0x91, 0x5f, 0x1b, 0xe1, 0x2f, 0xae, 0x40, 0x5b, 0x88, 0x56, 0x8a, 0xb6,
-	0x81, 0x26, 0x42, 0x5f, 0x8d, 0x84, 0x1e, 0xca, 0xde, 0xba, 0x5e, 0x8f, 0x49, 0xab, 0xde, 0xff,
-	0x83, 0xd0, 0x33, 0xd8, 0x4f, 0xd5, 0x44, 0xf9, 0xae, 0x50, 0x69, 0xde, 0x53, 0xda, 0x2b, 0x3d,
-	0x64, 0x0d, 0x8c, 0x6f, 0x82, 0x90, 0x1e, 0x94, 0xf4, 0x4d, 0x08, 0x30, 0xc0, 0x07, 0x6c, 0x02,
-	0xca, 0x01, 0x46, 0xc2, 0x5d, 0x8b, 0xf4, 0x29, 0x1c, 0x6d, 0xe2, 0xd1, 0x92, 0x43, 0x4f, 0x61,
-	0x37, 0x97, 0xc2, 0xba, 0x3b, 0xf3, 0x95, 0xd9, 0xc6, 0x53, 0xbf, 0xdc, 0xb0, 0x84, 0x79, 0xd6,
-	0xd2, 0xb2, 0x9d, 0x62, 0x09, 0x14, 0x97, 0x17, 0x6f, 0x0b, 0x4e, 0xe6, 0x0b, 0x4e, 0x3e, 0x16,
-	0x9c, 0xbc, 0x2c, 0x79, 0x65, 0xbe, 0xe4, 0x95, 0xf7, 0x25, 0xaf, 0xdc, 0x1f, 0x15, 0xbb, 0xcf,
-	0x7e, 0x2e, 0xef, 0xf3, 0x4c, 0xba, 0x87, 0x1a, 0x4e, 0x7f, 0xfe, 0x19, 0x00, 0x00, 0xff, 0xff,
-	0x5c, 0x9e, 0x56, 0x51, 0x1c, 0x02, 0x00, 0x00,
+	// 396 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x92, 0xc1, 0x8e, 0xda, 0x30,
+	0x14, 0x45, 0x71, 0x21, 0x14, 0x0c, 0x15, 0x60, 0x55, 0x95, 0x55, 0x55, 0x51, 0xc4, 0x2a, 0xaa,
+	0x2a, 0x58, 0xb4, 0x5f, 0x50, 0x58, 0x74, 0x51, 0x36, 0x69, 0x37, 0xed, 0xce, 0x4d, 0x5e, 0xc1,
+	0x22, 0xb1, 0x23, 0xc7, 0xb4, 0xe4, 0x2f, 0xe6, 0x8f, 0x66, 0x3b, 0x4b, 0x96, 0xb3, 0x1c, 0xc1,
+	0x8f, 0x8c, 0xfc, 0x12, 0x0d, 0x61, 0x98, 0x1d, 0xf7, 0xdc, 0xfb, 0xcc, 0x8b, 0x7d, 0xa9, 0xaf,
+	0x73, 0x2b, 0xf5, 0xdc, 0xea, 0x2d, 0xa8, 0xbf, 0x22, 0xb6, 0xda, 0x94, 0xf3, 0x04, 0x94, 0xce,
+	0x66, 0xb9, 0xd1, 0x56, 0x33, 0x86, 0xfe, 0xac, 0xe9, 0x4f, 0x6f, 0x3b, 0xd4, 0x5b, 0xba, 0x0c,
+	0x7b, 0x4b, 0x3d, 0x0c, 0x73, 0x12, 0x90, 0xb0, 0x1f, 0x55, 0x82, 0x05, 0x74, 0x90, 0x40, 0x11,
+	0x1b, 0xe9, 0x46, 0x15, 0x7f, 0x85, 0x5e, 0x13, 0xb1, 0x77, 0xb4, 0x6b, 0x65, 0xbc, 0x05, 0xc3,
+	0xdb, 0x68, 0xd6, 0x8a, 0x7d, 0xa0, 0xfd, 0xdc, 0x40, 0x2c, 0x0b, 0x37, 0xd7, 0x09, 0x48, 0xe8,
+	0x45, 0x67, 0xc0, 0xc6, 0xb4, 0xbd, 0x33, 0x29, 0xf7, 0x70, 0xc4, 0xfd, 0x74, 0xf9, 0x4c, 0xec,
+	0x7f, 0xec, 0xf2, 0x3c, 0x2d, 0x79, 0x37, 0x20, 0x61, 0x3b, 0x3a, 0x03, 0xf7, 0x2f, 0x45, 0x65,
+	0xbd, 0x46, 0xab, 0x56, 0x6c, 0x46, 0x59, 0x2c, 0xd4, 0x62, 0x23, 0xd4, 0x1a, 0x56, 0x4f, 0xe3,
+	0xbd, 0x80, 0x84, 0xbd, 0xe8, 0x05, 0x87, 0x7d, 0xa2, 0x93, 0x54, 0x66, 0xd2, 0x2e, 0x85, 0x4c,
+	0xcb, 0x95, 0x54, 0x56, 0xaa, 0x35, 0xef, 0x63, 0xfc, 0xda, 0x70, 0xe9, 0xa4, 0xa1, 0xbf, 0xbb,
+	0x00, 0xa7, 0xb8, 0xc0, 0xb5, 0xc1, 0xa6, 0x74, 0x98, 0x8a, 0xc2, 0x3a, 0xb6, 0x14, 0x16, 0xf8,
+	0x00, 0x3f, 0xee, 0x82, 0xb9, 0xfb, 0xcc, 0xa4, 0xb2, 0x90, 0xfc, 0xd4, 0x89, 0x28, 0xf9, 0x10,
+	0xcf, 0x6a, 0x22, 0xf6, 0x91, 0x8e, 0x37, 0xa2, 0xf8, 0x05, 0xc2, 0xa4, 0xe5, 0x37, 0x91, 0xfe,
+	0x73, 0x0b, 0xbe, 0xc1, 0x05, 0xaf, 0xb8, 0x3b, 0xcd, 0xca, 0x0c, 0x0a, 0xa7, 0x21, 0xe1, 0x23,
+	0xbc, 0xe5, 0x26, 0x62, 0x21, 0x1d, 0x29, 0xd8, 0xdb, 0x7a, 0x00, 0xd7, 0x1a, 0xe3, 0x5a, 0xcf,
+	0x31, 0xbe, 0xb4, 0xb0, 0xb0, 0x30, 0x20, 0x2c, 0x24, 0x7c, 0x52, 0xbf, 0xf4, 0x19, 0xb9, 0x86,
+	0xe8, 0xff, 0x0a, 0x0c, 0x67, 0x55, 0x43, 0x50, 0x7c, 0xfd, 0x72, 0x77, 0xf4, 0xc9, 0xe1, 0xe8,
+	0x93, 0x87, 0xa3, 0x4f, 0x6e, 0x4e, 0x7e, 0xeb, 0x70, 0xf2, 0x5b, 0xf7, 0x27, 0xbf, 0xf5, 0xfb,
+	0x7d, 0xd5, 0xc7, 0xfd, 0x65, 0x23, 0x6d, 0x99, 0x43, 0xf1, 0xa7, 0x8b, 0x95, 0xfc, 0xfc, 0x18,
+	0x00, 0x00, 0xff, 0xff, 0x9c, 0x8f, 0x43, 0x6a, 0xb4, 0x02, 0x00, 0x00,
 }
 
 func (m *Denom) Marshal() (dAtA []byte, err error) {
@@ -218,22 +254,54 @@ func (m *Denom) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		copy(dAtA[i:], m.Owner)
 		i = encodeVarintDenom(dAtA, i, uint64(len(m.Owner)))
 		i--
-		dAtA[i] = 0x6a
-	}
-	if m.YearsToHalving != 0 {
-		i = encodeVarintDenom(dAtA, i, uint64(m.YearsToHalving))
+		dAtA[i] = 0x1
 		i--
-		dAtA[i] = 0x60
+		dAtA[i] = 0x92
 	}
-	if m.HasHalving {
+	if len(m.DateCreated) > 0 {
+		i -= len(m.DateCreated)
+		copy(dAtA[i:], m.DateCreated)
+		i = encodeVarintDenom(dAtA, i, uint64(len(m.DateCreated)))
 		i--
-		if m.HasHalving {
+		dAtA[i] = 0x1
+		i--
+		dAtA[i] = 0x8a
+	}
+	if len(m.NextHalvingDate) > 0 {
+		i -= len(m.NextHalvingDate)
+		copy(dAtA[i:], m.NextHalvingDate)
+		i = encodeVarintDenom(dAtA, i, uint64(len(m.NextHalvingDate)))
+		i--
+		dAtA[i] = 0x1
+		i--
+		dAtA[i] = 0x82
+	}
+	if m.TimesHalved != 0 {
+		i = encodeVarintDenom(dAtA, i, uint64(m.TimesHalved))
+		i--
+		dAtA[i] = 0x78
+	}
+	if m.HasYearlyHalving {
+		i--
+		if m.HasYearlyHalving {
 			dAtA[i] = 1
 		} else {
 			dAtA[i] = 0
 		}
 		i--
-		dAtA[i] = 0x58
+		dAtA[i] = 0x68
+	}
+	if m.MintedToday != 0 {
+		i = encodeVarintDenom(dAtA, i, uint64(m.MintedToday))
+		i--
+		dAtA[i] = 0x60
+	}
+	if len(m.LastMintDate) > 0 {
+		i -= len(m.LastMintDate)
+		copy(dAtA[i:], m.LastMintDate)
+		i = encodeVarintDenom(dAtA, i, uint64(len(m.LastMintDate)))
+		i--
+		dAtA[i] = 0x5a
 	}
 	if m.DailyMintingLimit != 0 {
 		i = encodeVarintDenom(dAtA, i, uint64(m.DailyMintingLimit))
@@ -357,15 +425,30 @@ func (m *Denom) Size() (n int) {
 	if m.DailyMintingLimit != 0 {
 		n += 1 + sovDenom(uint64(m.DailyMintingLimit))
 	}
-	if m.HasHalving {
+	l = len(m.LastMintDate)
+	if l > 0 {
+		n += 1 + l + sovDenom(uint64(l))
+	}
+	if m.MintedToday != 0 {
+		n += 1 + sovDenom(uint64(m.MintedToday))
+	}
+	if m.HasYearlyHalving {
 		n += 2
 	}
-	if m.YearsToHalving != 0 {
-		n += 1 + sovDenom(uint64(m.YearsToHalving))
+	if m.TimesHalved != 0 {
+		n += 1 + sovDenom(uint64(m.TimesHalved))
+	}
+	l = len(m.NextHalvingDate)
+	if l > 0 {
+		n += 2 + l + sovDenom(uint64(l))
+	}
+	l = len(m.DateCreated)
+	if l > 0 {
+		n += 2 + l + sovDenom(uint64(l))
 	}
 	l = len(m.Owner)
 	if l > 0 {
-		n += 1 + l + sovDenom(uint64(l))
+		n += 2 + l + sovDenom(uint64(l))
 	}
 	return n
 }
@@ -566,7 +649,7 @@ func (m *Denom) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.MaxSupply |= int32(b&0x7F) << shift
+				m.MaxSupply |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -585,7 +668,7 @@ func (m *Denom) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Supply |= int32(b&0x7F) << shift
+				m.Supply |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
@@ -644,14 +727,65 @@ func (m *Denom) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.DailyMintingLimit |= int32(b&0x7F) << shift
+				m.DailyMintingLimit |= int64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
 		case 11:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field LastMintDate", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowDenom
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthDenom
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthDenom
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.LastMintDate = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 12:
 			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field HasHalving", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field MintedToday", wireType)
+			}
+			m.MintedToday = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowDenom
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.MintedToday |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 13:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field HasYearlyHalving", wireType)
 			}
 			var v int
 			for shift := uint(0); ; shift += 7 {
@@ -668,12 +802,12 @@ func (m *Denom) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
-			m.HasHalving = bool(v != 0)
-		case 12:
+			m.HasYearlyHalving = bool(v != 0)
+		case 15:
 			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field YearsToHalving", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field TimesHalved", wireType)
 			}
-			m.YearsToHalving = 0
+			m.TimesHalved = 0
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowDenom
@@ -683,12 +817,76 @@ func (m *Denom) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.YearsToHalving |= int32(b&0x7F) << shift
+				m.TimesHalved |= int32(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-		case 13:
+		case 16:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field NextHalvingDate", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowDenom
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthDenom
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthDenom
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.NextHalvingDate = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 17:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DateCreated", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowDenom
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthDenom
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthDenom
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.DateCreated = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 18:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Owner", wireType)
 			}

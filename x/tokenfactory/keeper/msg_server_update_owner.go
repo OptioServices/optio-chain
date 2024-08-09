@@ -34,8 +34,7 @@ func (k msgServer) UpdateOwner(goCtx context.Context, msg *types.MsgUpdateOwner)
 		CanChangeMaxSupply: denom.CanChangeMaxSupply,
 		LimitDailyMinting:  denom.LimitDailyMinting,
 		DailyMintingLimit:  denom.DailyMintingLimit,
-		HasHalving:         denom.HasHalving,
-		YearsToHalving:     denom.YearsToHalving,
+		HasYearlyHalving:   denom.HasYearlyHalving,
 	}
 	k.SetDenom(ctx, updateDenom)
 

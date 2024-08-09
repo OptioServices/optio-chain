@@ -15,13 +15,14 @@ func NewMsgCreateDenom(
 	ticker string,
 	precision int32,
 	url string,
-	maxSupply int32,
-	supply int32,
+	maxSupply int64,
+	supply int64,
 	canChangeMaxSupply bool,
 	limitDailyMinting bool,
-	dailyMintingLimit int32,
-	hasHalving bool,
-	yearsToHalving int32,
+	dailyMintingLimit int64,
+	lastMintDate string,
+	hasYearlyHalving bool,
+	nextHalvingDate string,
 
 ) *MsgCreateDenom {
 	return &MsgCreateDenom{
@@ -35,8 +36,7 @@ func NewMsgCreateDenom(
 		CanChangeMaxSupply: canChangeMaxSupply,
 		LimitDailyMinting:  limitDailyMinting,
 		DailyMintingLimit:  dailyMintingLimit,
-		HasHalving:         hasHalving,
-		YearsToHalving:     yearsToHalving,
+		HasYearlyHalving:   hasYearlyHalving,
 	}
 }
 
@@ -55,6 +55,9 @@ func (msg *MsgCreateDenom) ValidateBasic() error {
 	if msg.MaxSupply == 0 {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "Max Supply must be greater than 0")
 	}
+	if msg.LimitDailyMinting && msg.DailyMintingLimit == 0 {
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "Daily Minting Limit must be greater than 0")
+	}
 	return nil
 }
 
@@ -64,16 +67,10 @@ func NewMsgUpdateDenom(
 	owner string,
 	denom string,
 	description string,
-	ticker string,
-	precision int32,
 	url string,
-	maxSupply int32,
+	maxSupply int64,
 	supply int32,
 	canChangeMaxSupply bool,
-	limitDailyMinting bool,
-	dailyMintingLimit int32,
-	hasHalving bool,
-	yearsToHalving int32,
 
 ) *MsgUpdateDenom {
 	return &MsgUpdateDenom{

@@ -7,3 +7,9 @@ release/
 *.dot
 *.log
 *.ign
+
+build/
+prod-sim/*/config/addrbook.json
+prod-sim/*/data/*
+!prod-sim/*/data/priv_validator_state.json
+prod-sim/ 

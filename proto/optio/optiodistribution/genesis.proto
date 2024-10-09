@@ -1,0 +1,17 @@
+syntax = "proto3";
+package optio.optiodistribution;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "optio/optiodistribution/params.proto";
+
+option go_package = "optio/x/optiodistribution/types";
+
+// GenesisState defines the optiodistribution module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

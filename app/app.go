@@ -77,7 +77,7 @@ import (
 
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
-	"optio/docs"
+	"github.com/OptioServices/optio/docs"
 )
 
 const (

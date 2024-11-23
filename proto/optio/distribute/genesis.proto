@@ -1,0 +1,17 @@
+syntax = "proto3";
+package optio.distribute;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "optio/distribute/params.proto";
+
+option go_package = "github.com/OptioServices/optio/x/distribute/types";
+
+// GenesisState defines the distribute module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

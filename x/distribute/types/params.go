@@ -80,13 +80,14 @@ func validateMaxSupply(v interface{}) error {
 
 // validateAuthorizedAccounts validates the AuthorizedAccounts param
 func validateAuthorizedAccounts(v interface{}) error {
-	authorizedAccounts, ok := v.(string)
+	authorizedAccounts, ok := v.([]string)
 	if !ok {
 		return fmt.Errorf("invalid parameter type: %T", v)
 	}
 
-	// TODO implement validation
-	_ = authorizedAccounts
+	if len(authorizedAccounts) == 0 {
+		return fmt.Errorf("authorized accounts cannot be empty")
+	}
 
 	return nil
 }

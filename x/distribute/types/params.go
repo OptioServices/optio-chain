@@ -9,15 +9,18 @@ import (
 var _ paramtypes.ParamSet = (*Params)(nil)
 
 var (
-	KeyMaxSupply = []byte("MaxSupply")
-	// TODO: Determine the default value
+	KeyMaxSupply            = []byte("MaxSupply")
 	DefaultMaxSupply uint64 = 0
 )
 
 var (
-	KeyAuthorizedAccounts = []byte("AuthorizedAccounts")
-	// TODO: Determine the default value
+	KeyAuthorizedAccounts              = []byte("AuthorizedAccounts")
 	DefaultAuthorizedAccounts []string = []string{""}
+)
+
+var (
+	KeyDenom            = []byte("Denom")
+	DefaultDenom string = "uOPT"
 )
 
 // ParamKeyTable the param key table for launch module
@@ -28,10 +31,12 @@ func ParamKeyTable() paramtypes.KeyTable {
 // NewParams creates a new Params instance
 func NewParams(
 	maxSupply uint64,
+	denom string,
 	authorizedAccounts []string,
 ) Params {
 	return Params{
 		MaxSupply:          maxSupply,
+		Denom:              denom,
 		AuthorizedAccounts: authorizedAccounts,
 	}
 }
@@ -40,6 +45,7 @@ func NewParams(
 func DefaultParams() Params {
 	return NewParams(
 		DefaultMaxSupply,
+		DefaultDenom,
 		DefaultAuthorizedAccounts,
 	)
 }
@@ -48,6 +54,7 @@ func DefaultParams() Params {
 func (p *Params) ParamSetPairs() paramtypes.ParamSetPairs {
 	return paramtypes.ParamSetPairs{
 		paramtypes.NewParamSetPair(KeyMaxSupply, &p.MaxSupply, validateMaxSupply),
+		paramtypes.NewParamSetPair(KeyDenom, &p.Denom, validateDenom),
 		paramtypes.NewParamSetPair(KeyAuthorizedAccounts, &p.AuthorizedAccounts, validateAuthorizedAccounts),
 	}
 }
@@ -55,6 +62,10 @@ func (p *Params) ParamSetPairs() paramtypes.ParamSetPairs {
 // Validate validates the set of params
 func (p Params) Validate() error {
 	if err := validateMaxSupply(p.MaxSupply); err != nil {
+		return err
+	}
+
+	if err := validateDenom(p.Denom); err != nil {
 		return err
 	}
 
@@ -87,6 +98,19 @@ func validateAuthorizedAccounts(v interface{}) error {
 
 	if len(authorizedAccounts) == 0 {
 		return fmt.Errorf("authorized accounts cannot be empty")
+	}
+
+	return nil
+}
+
+func validateDenom(v interface{}) error {
+	denom, ok := v.(string)
+	if !ok {
+		return fmt.Errorf("invalid parameter type: %T", v)
+	}
+
+	if denom == "" {
+		return fmt.Errorf("denom cannot be empty")
 	}
 
 	return nil

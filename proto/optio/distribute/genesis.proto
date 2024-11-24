@@ -5,7 +5,7 @@ import "amino/amino.proto";
 import "gogoproto/gogo.proto";
 import "optio/distribute/params.proto";
 
-option go_package = "github.com/OptioServices/optio/x/distribute/types";
+option go_package = "github.com/OptioServices/optio-chain/x/distribute/types";
 
 // GenesisState defines the distribute module's genesis state.
 message GenesisState {

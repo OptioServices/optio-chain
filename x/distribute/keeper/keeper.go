@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/OptioServices/optio/x/distribute/types"
+	"github.com/OptioServices/optio-chain/x/distribute/types"
 )
 
 type (

@@ -8,37 +8,37 @@ import (
 
 var _ sdk.Msg = &MsgDistribute{}
 
-func NewMsgDistribute(creator string, amount sdk.Coin, recipients []*MsgDistribute_Output) *MsgDistribute {
+func NewMsgDistribute(creator string, amount uint64, recipients []Output) *MsgDistribute {
 	return &MsgDistribute{
-		Creator:    creator,
-		Amount:     amount,
-		Recipients: recipients,
+		FromAddress: creator,
+		Amount:      amount,
+		Outputs:     recipients,
 	}
 }
 
 func (msg *MsgDistribute) ValidateBasic() error {
-	_, err := sdk.AccAddressFromBech32(msg.Creator)
+	_, err := sdk.AccAddressFromBech32(msg.FromAddress)
 	if err != nil {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
 
-	if msg.Amount.IsZero() {
+	if msg.Amount == 0 {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "amount cannot be zero")
 	}
 
-	if len(msg.Recipients) == 0 {
+	if len(msg.Outputs) == 0 {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "recipients cannot be empty")
 	}
 
 	var total uint64
-	for _, recipient := range msg.Recipients {
+	for _, recipient := range msg.Outputs {
 		_, err := sdk.AccAddressFromBech32(recipient.Address)
 		if err != nil {
 			return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid recipient address (%s)", err)
 		}
-		total += recipient.Amount
+		total += recipient.Coin.Amount.Uint64()
 	}
-	if total != msg.Amount.Amount.Uint64() {
+	if total != msg.Amount {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "amount and recipients total do not match")
 	}
 	return nil

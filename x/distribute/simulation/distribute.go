@@ -3,8 +3,8 @@ package simulation
 import (
 	"math/rand"
 
-	"github.com/OptioServices/optio/x/distribute/keeper"
-	"github.com/OptioServices/optio/x/distribute/types"
+	"github.com/OptioServices/optio-chain/x/distribute/keeper"
+	"github.com/OptioServices/optio-chain/x/distribute/types"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
@@ -19,7 +19,7 @@ func SimulateMsgDistribute(
 	) (simtypes.OperationMsg, []simtypes.FutureOperation, error) {
 		simAccount, _ := simtypes.RandomAcc(r, accs)
 		msg := &types.MsgDistribute{
-			Creator: simAccount.Address.String(),
+			FromAddress: simAccount.Address.String(),
 		}
 
 		// TODO: Handling the Distribute simulation

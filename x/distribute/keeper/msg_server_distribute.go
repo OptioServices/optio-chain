@@ -5,7 +5,7 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 	"cosmossdk.io/math"
-	"github.com/OptioServices/optio/x/distribute/types"
+	"github.com/OptioServices/optio-chain/x/distribute/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
@@ -13,28 +13,30 @@ import (
 func (k msgServer) Distribute(goCtx context.Context, msg *types.MsgDistribute) (*types.MsgDistributeResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	authorized := k.IsAuthorized(ctx, msg.Creator)
+	authorized := k.IsAuthorized(ctx, msg.FromAddress)
 	if !authorized {
 		return nil, errorsmod.Wrapf(sdkerrors.ErrUnauthorized, "Unauthorized sender")
 	}
 
-	currentSupply := k.bankKeeper.GetSupply(ctx, msg.Amount.Denom).Amount.Uint64()
-	if currentSupply+msg.Amount.Amount.Uint64() > k.GetParams(ctx).MaxSupply {
+	denom := k.GetParams(ctx).Denom
+	currentSupply := k.bankKeeper.GetSupply(ctx, denom).Amount.Uint64()
+	if currentSupply+msg.Amount > k.GetParams(ctx).MaxSupply {
 		return nil, errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "Max supply exceeded")
 	}
 
-	err := k.bankKeeper.MintCoins(ctx, types.ModuleName, sdk.NewCoins(msg.Amount))
+	coin := sdk.NewCoin(denom, math.NewIntFromUint64(msg.Amount))
+	err := k.bankKeeper.MintCoins(ctx, types.ModuleName, sdk.NewCoins(coin))
 	if err != nil {
 		return nil, errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "Minting coins failed")
 	}
 
-	for _, recipient := range msg.Recipients {
+	for _, recipient := range msg.Outputs {
 		acct, err := sdk.AccAddressFromBech32(recipient.Address)
 		if err != nil {
 			return nil, errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "Invalid recipient address")
 		}
 
-		coins := sdk.NewCoins(sdk.NewCoin(msg.Amount.Denom, math.NewIntFromUint64(recipient.Amount)))
+		coins := sdk.NewCoins(sdk.NewCoin(denom, recipient.Coin.Amount))
 		err = k.bankKeeper.SendCoinsFromModuleToAccount(ctx, types.ModuleName, acct, coins)
 		if err != nil {
 			return nil, errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "Sending coins failed")

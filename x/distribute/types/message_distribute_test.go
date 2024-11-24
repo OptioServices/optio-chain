@@ -3,7 +3,7 @@ package types
 import (
 	"testing"
 
-	"github.com/OptioServices/optio/testutil/sample"
+	"github.com/OptioServices/optio-chain/testutil/sample"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/stretchr/testify/require"
 )
@@ -17,12 +17,12 @@ func TestMsgDistribute_ValidateBasic(t *testing.T) {
 		{
 			name: "invalid address",
 			msg: MsgDistribute{
-				Creator: "invalid_address",
-				Amount:  *sample.Coin(),
-				Recipients: []*MsgDistribute_Output{
+				FromAddress: "invalid_address",
+				Amount:      100,
+				Outputs: []Output{
 					{
 						Address: sample.AccAddress(),
-						Amount:  100,
+						Coin:    *sample.Coin(),
 					},
 				},
 			},
@@ -30,28 +30,28 @@ func TestMsgDistribute_ValidateBasic(t *testing.T) {
 		}, {
 			name: "valid address",
 			msg: MsgDistribute{
-				Creator: sample.AccAddress(),
-				Amount:  *sample.Coin(),
-				Recipients: []*MsgDistribute_Output{
+				FromAddress: sample.AccAddress(),
+				Amount:      100,
+				Outputs: []Output{
 					{
 						Address: sample.AccAddress(),
-						Amount:  100,
+						Coin:    *sample.Coin(),
 					},
 				},
 			},
 		}, {
 			name: "mismatched amount",
 			msg: MsgDistribute{
-				Creator: sample.AccAddress(),
-				Amount:  *sample.Coin(),
-				Recipients: []*MsgDistribute_Output{
+				FromAddress: sample.AccAddress(),
+				Amount:      100,
+				Outputs: []Output{
 					{
 						Address: sample.AccAddress(),
-						Amount:  100,
+						Coin:    *sample.Coin(),
 					},
 					{
 						Address: sample.AccAddress(),
-						Amount:  100,
+						Coin:    *sample.Coin(),
 					},
 				},
 			},

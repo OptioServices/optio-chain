@@ -4,7 +4,7 @@ package optio.distribute;
 import "amino/amino.proto";
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/OptioServices/optio/x/distribute/types";
+option go_package = "github.com/OptioServices/optio-chain/x/distribute/types";
 
 // Params defines the parameters for the module.
 message Params {
@@ -13,5 +13,6 @@ message Params {
 
   
   uint64 maxSupply = 1 [(gogoproto.moretags) = "yaml:\"max_supply\""];
-  repeated string authorizedAccounts = 2 [(gogoproto.moretags) = "yaml:\"authorized_accounts\""];
+  string denom = 2 [(gogoproto.moretags) = "yaml:\"denom\""];
+  repeated string authorizedAccounts = 3 [(gogoproto.moretags) = "yaml:\"authorized_accounts\""];
 }

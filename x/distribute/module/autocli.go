@@ -3,7 +3,7 @@ package distribute
 import (
 	autocliv1 "cosmossdk.io/api/cosmos/autocli/v1"
 
-	modulev1 "github.com/OptioServices/optio/api/optio/distribute"
+	modulev1 "github.com/OptioServices/optio-chain/api/optio/distribute"
 )
 
 // AutoCLIOptions implements the autocli.HasAutoCLIConfig interface.

@@ -10,7 +10,7 @@ import "gogoproto/gogo.proto";
 import "optio/distribute/params.proto";
 import "optio/distribute/distribute.proto";
 
-option go_package = "github.com/OptioServices/optio-chain/x/distribute/types";
+option go_package = "github.com/OptioServices/optio/x/distribute/types";
 
 // Msg defines the Msg service.
 service Msg {

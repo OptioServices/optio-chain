@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"github.com/OptioServices/optio-chain/x/distribute/types"
+	"github.com/OptioServices/optio/x/distribute/types"
 )
 
 type msgServer struct {

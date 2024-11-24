@@ -6,7 +6,7 @@ import (
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/OptioServices/optio-chain/x/distribute/types"
+	"github.com/OptioServices/optio/x/distribute/types"
 )
 
 func (k msgServer) UpdateParams(goCtx context.Context, req *types.MsgUpdateParams) (*types.MsgUpdateParamsResponse, error) {

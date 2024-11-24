@@ -17,8 +17,8 @@ import (
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/OptioServices/optio-chain/x/distribute/keeper"
-	"github.com/OptioServices/optio-chain/x/distribute/types"
+	"github.com/OptioServices/optio/x/distribute/keeper"
+	"github.com/OptioServices/optio/x/distribute/types"
 )
 
 func DistributeKeeper(t testing.TB) (keeper.Keeper, sdk.Context) {

@@ -31,9 +31,9 @@ import (
 	"cosmossdk.io/x/feegrant"
 	"cosmossdk.io/x/nft"
 	upgradetypes "cosmossdk.io/x/upgrade/types"
-	distributemodulev1 "github.com/OptioServices/optio-chain/api/optio/distribute/module"
-	_ "github.com/OptioServices/optio-chain/x/distribute/module" // import for side-effects
-	distributemoduletypes "github.com/OptioServices/optio-chain/x/distribute/types"
+	distributemodulev1 "github.com/OptioServices/optio/api/optio/distribute/module"
+	_ "github.com/OptioServices/optio/x/distribute/module" // import for side-effects
+	distributemoduletypes "github.com/OptioServices/optio/x/distribute/types"
 	"github.com/cosmos/cosmos-sdk/runtime"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	vestingtypes "github.com/cosmos/cosmos-sdk/x/auth/vesting/types"

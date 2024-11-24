@@ -7,7 +7,7 @@ import "optio/distribute/params.proto";
 import "cosmos/base/v1beta1/coin.proto";
 import "cosmos_proto/cosmos.proto";
 
-option go_package = "github.com/OptioServices/optio-chain/x/distribute/types";
+option go_package = "github.com/OptioServices/optio/x/distribute/types";
 
 // Output models transaction outputs.
 message Output {

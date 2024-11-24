@@ -14,6 +14,6 @@ func AccAddress() string {
 }
 
 func Coin() *sdk.Coin {
-	coin := sdk.NewCoin("stake", math.NewInt(100))
+	coin := sdk.NewCoin("uOPT", math.NewInt(100))
 	return &coin
 }

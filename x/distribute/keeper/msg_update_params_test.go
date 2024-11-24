@@ -6,7 +6,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/OptioServices/optio-chain/x/distribute/types"
+	"github.com/OptioServices/optio/x/distribute/types"
 )
 
 func TestMsgUpdateParams(t *testing.T) {

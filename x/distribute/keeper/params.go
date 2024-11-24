@@ -5,7 +5,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/runtime"
 
-	"github.com/OptioServices/optio-chain/x/distribute/types"
+	"github.com/OptioServices/optio/x/distribute/types"
 )
 
 // GetParams get all parameters as types.Params

@@ -3,8 +3,8 @@ package distribute
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/OptioServices/optio-chain/x/distribute/keeper"
-	"github.com/OptioServices/optio-chain/x/distribute/types"
+	"github.com/OptioServices/optio/x/distribute/keeper"
+	"github.com/OptioServices/optio/x/distribute/types"
 )
 
 // InitGenesis initializes the module's state from a provided genesis state.

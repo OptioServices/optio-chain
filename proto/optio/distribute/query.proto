@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "optio/distribute/params.proto";
 
-option go_package = "github.com/OptioServices/optio-chain/x/distribute/types";
+option go_package = "github.com/OptioServices/optio/x/distribute/types";
 
 // Query defines the gRPC querier service.
 service Query {

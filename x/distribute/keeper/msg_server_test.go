@@ -6,9 +6,9 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	keepertest "github.com/OptioServices/optio-chain/testutil/keeper"
-	"github.com/OptioServices/optio-chain/x/distribute/keeper"
-	"github.com/OptioServices/optio-chain/x/distribute/types"
+	keepertest "github.com/OptioServices/optio/testutil/keeper"
+	"github.com/OptioServices/optio/x/distribute/keeper"
+	"github.com/OptioServices/optio/x/distribute/types"
 )
 
 func setupMsgServer(t testing.TB) (keeper.Keeper, types.MsgServer, context.Context) {

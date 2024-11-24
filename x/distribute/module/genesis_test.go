@@ -3,10 +3,10 @@ package distribute_test
 import (
 	"testing"
 
-	keepertest "github.com/OptioServices/optio-chain/testutil/keeper"
-	"github.com/OptioServices/optio-chain/testutil/nullify"
-	distribute "github.com/OptioServices/optio-chain/x/distribute/module"
-	"github.com/OptioServices/optio-chain/x/distribute/types"
+	keepertest "github.com/OptioServices/optio/testutil/keeper"
+	"github.com/OptioServices/optio/testutil/nullify"
+	distribute "github.com/OptioServices/optio/x/distribute/module"
+	"github.com/OptioServices/optio/x/distribute/types"
 	"github.com/stretchr/testify/require"
 )
 

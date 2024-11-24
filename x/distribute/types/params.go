@@ -17,7 +17,7 @@ var (
 var (
 	KeyAuthorizedAccounts = []byte("AuthorizedAccounts")
 	// TODO: Determine the default value
-	DefaultAuthorizedAccounts []string = []string{}
+	DefaultAuthorizedAccounts []string = []string{""}
 )
 
 // ParamKeyTable the param key table for launch module

@@ -3,11 +3,9 @@ validation: sovereign
 accounts: 
 - name: alice
   coins:
-  - 20000optio
   - 200000000stake
 - name: bob
   coins:
-  - 10000optio
   - 100000000stake
 client:
   openapi:
@@ -15,7 +13,6 @@ client:
 faucet:
   name: bob
   coins:
-  - 5optio
   - 100000stake
 validators:
 - name: alice

@@ -20,9 +20,9 @@ import (
 
 	// this line is used by starport scaffolding # 1
 
-	modulev1 "github.com/OptioServices/optio-chain/api/optio/distribute/module"
-	"github.com/OptioServices/optio-chain/x/distribute/keeper"
-	"github.com/OptioServices/optio-chain/x/distribute/types"
+	modulev1 "github.com/OptioServices/optio/api/optio/distribute/module"
+	"github.com/OptioServices/optio/x/distribute/keeper"
+	"github.com/OptioServices/optio/x/distribute/types"
 )
 
 var (

@@ -1,4 +1,4 @@
-module github.com/OptioServices/optio
+module github.com/OptioServices/optio-chain
 
 go 1.21
 

@@ -22,7 +22,7 @@ func TestMsgDistribute_ValidateBasic(t *testing.T) {
 				Outputs: []Output{
 					{
 						Address: sample.AccAddress(),
-						Coin:    *sample.Coin(),
+						Amount:  100,
 					},
 				},
 			},
@@ -35,7 +35,7 @@ func TestMsgDistribute_ValidateBasic(t *testing.T) {
 				Outputs: []Output{
 					{
 						Address: sample.AccAddress(),
-						Coin:    *sample.Coin(),
+						Amount:  100,
 					},
 				},
 			},
@@ -47,11 +47,11 @@ func TestMsgDistribute_ValidateBasic(t *testing.T) {
 				Outputs: []Output{
 					{
 						Address: sample.AccAddress(),
-						Coin:    *sample.Coin(),
+						Amount:  100,
 					},
 					{
 						Address: sample.AccAddress(),
-						Coin:    *sample.Coin(),
+						Amount:  100,
 					},
 				},
 			},

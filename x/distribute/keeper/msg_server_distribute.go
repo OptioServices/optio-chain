@@ -36,7 +36,7 @@ func (k msgServer) Distribute(goCtx context.Context, msg *types.MsgDistribute) (
 			return nil, errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "Invalid recipient address")
 		}
 
-		coins := sdk.NewCoins(sdk.NewCoin(denom, recipient.Coin.Amount))
+		coins := sdk.NewCoins(sdk.NewCoin(denom, math.NewIntFromUint64(recipient.Amount)))
 		err = k.bankKeeper.SendCoinsFromModuleToAccount(ctx, types.ModuleName, acct, coins)
 		if err != nil {
 			return nil, errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "Sending coins failed")

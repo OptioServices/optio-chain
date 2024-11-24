@@ -36,7 +36,7 @@ func (msg *MsgDistribute) ValidateBasic() error {
 		if err != nil {
 			return errorsmod.Wrapf(sdkerrors.ErrInvalidAddress, "invalid recipient address (%s)", err)
 		}
-		total += recipient.Coin.Amount.Uint64()
+		total += recipient.Amount
 	}
 	if total != msg.Amount {
 		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "amount and recipients total do not match")

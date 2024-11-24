@@ -30,9 +30,9 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				},
 				{
 					RpcMethod:      "Distribute",
-					Use:            "distribute [amount] [recipients]",
+					Use:            "distribute [amount] [outputs]",
 					Short:          "Send a distribute tx",
-					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "amount"}, {ProtoField: "recipients"}},
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "amount"}, {ProtoField: "outputs"}},
 				},
 				// this line is used by ignite scaffolding # autocli/tx
 			},

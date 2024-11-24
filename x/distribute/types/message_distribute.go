@@ -8,11 +8,11 @@ import (
 
 var _ sdk.Msg = &MsgDistribute{}
 
-func NewMsgDistribute(creator string, amount uint64, recipients []Output) *MsgDistribute {
+func NewMsgDistribute(creator string, amount uint64, outputs []Output) *MsgDistribute {
 	return &MsgDistribute{
 		FromAddress: creator,
 		Amount:      amount,
-		Outputs:     recipients,
+		Outputs:     outputs,
 	}
 }
 
@@ -27,7 +27,7 @@ func (msg *MsgDistribute) ValidateBasic() error {
 	}
 
 	if len(msg.Outputs) == 0 {
-		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "recipients cannot be empty")
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "outputs cannot be empty")
 	}
 
 	var total uint64
@@ -39,7 +39,7 @@ func (msg *MsgDistribute) ValidateBasic() error {
 		total += recipient.Amount
 	}
 	if total != msg.Amount {
-		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "amount and recipients total do not match")
+		return errorsmod.Wrapf(sdkerrors.ErrInvalidRequest, "amount and outputs total do not match")
 	}
 	return nil
 }

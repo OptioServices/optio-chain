@@ -23,7 +23,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"optio/app"
+	"github.com/OptioServices/optio/app"
 )
 
 func initRootCmd(

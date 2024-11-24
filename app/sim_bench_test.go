@@ -14,7 +14,7 @@ import (
 	simcli "github.com/cosmos/cosmos-sdk/x/simulation/client/cli"
 	"github.com/stretchr/testify/require"
 
-	"optio/app"
+	"github.com/OptioServices/optio/app"
 )
 
 // Profile with:

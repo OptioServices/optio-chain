@@ -6,8 +6,9 @@ import (
 
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
-	"optio/app"
-	"optio/cmd/optiod/cmd"
+	"github.com/OptioServices/optio/cmd/optiod/cmd"
+
+	"github.com/OptioServices/optio/app"
 )
 
 func main() {

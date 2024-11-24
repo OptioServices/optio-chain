@@ -1,6 +1,7 @@
 package sample
 
 import (
+	"cosmossdk.io/math"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/ed25519"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -10,4 +11,9 @@ func AccAddress() string {
 	pk := ed25519.GenPrivKey().PubKey()
 	addr := pk.Address()
 	return sdk.AccAddress(addr).String()
+}
+
+func Coin() *sdk.Coin {
+	coin := sdk.NewCoin("stake", math.NewInt(100))
+	return &coin
 }

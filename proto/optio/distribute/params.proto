@@ -1,0 +1,17 @@
+syntax = "proto3";
+package optio.distribute;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/OptioServices/optio/x/distribute/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "optio/x/distribute/Params";
+  option (gogoproto.equal) = true;
+
+  
+  uint64 maxSupply = 1 [(gogoproto.moretags) = "yaml:\"max_supply\""];
+  repeated string authorizedAccounts = 2 [(gogoproto.moretags) = "yaml:\"authorized_accounts\""];
+}

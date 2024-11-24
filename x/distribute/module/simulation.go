@@ -8,9 +8,9 @@ import (
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 
-	"github.com/OptioServices/optio/testutil/sample"
-	distributesimulation "github.com/OptioServices/optio/x/distribute/simulation"
-	"github.com/OptioServices/optio/x/distribute/types"
+	"github.com/OptioServices/optio-chain/testutil/sample"
+	distributesimulation "github.com/OptioServices/optio-chain/x/distribute/simulation"
+	"github.com/OptioServices/optio-chain/x/distribute/types"
 )
 
 // avoid unused import issue

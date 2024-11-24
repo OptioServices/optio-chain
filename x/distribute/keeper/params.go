@@ -31,3 +31,14 @@ func (k Keeper) SetParams(ctx context.Context, params types.Params) error {
 
 	return nil
 }
+
+func (k Keeper) IsAuthorized(ctx context.Context, address string) bool {
+	authorizedAccounts := k.GetParams(ctx).AuthorizedAccounts
+	for _, authorizedAccount := range authorizedAccounts {
+		if authorizedAccount == address {
+			return true
+		}
+	}
+
+	return false
+}
